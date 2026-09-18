@@ -7,7 +7,7 @@ import { CONTACT } from '@/content/site'
   <footer class="footer">
     <div class="page-shell footer-main">
       <BrandMark />
-      <p>Mai mult decât fotbal.</p>
+      <p>Mai mult decât fotbal</p>
       <a :href="CONTACT.phoneHref">{{ CONTACT.phoneDisplay }}</a>
     </div>
     <div class="page-shell footer-bottom">
@@ -56,18 +56,22 @@ import { CONTACT } from '@/content/site'
 
 @media (max-width: 640px) {
   .footer-main {
-    grid-template-columns: 1fr auto;
-    gap: 30px;
-    padding-block: 48px;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 18px;
+    min-height: 0;
+    padding-block: 52px;
   }
 
   .footer-main > p {
-    grid-column: 1 / -1;
     margin: 0;
   }
 
-  .footer-main > a:last-child {
-    grid-column: 1 / -1;
+  .footer-bottom {
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    text-align: center;
   }
 }
 </style>

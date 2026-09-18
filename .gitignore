@@ -29,3 +29,6 @@ lerna-debug.log*
 
 # TypeScript build info
 *.tsbuildinfo
+
+# Python venv pentru scripturile de brand și fonturi
+.venv

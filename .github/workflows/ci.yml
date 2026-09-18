@@ -1,0 +1,41 @@
+name: CI
+
+# Runs the same gates as the local `npm run build`, so a red check here means
+# Vercel would have failed too.
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - run: npm ci
+
+      - name: Types
+        run: npm run type-check
+
+      - name: Lint
+        run: npm run lint:check
+
+      - name: Format
+        run: npm run format:check
+
+      - name: Build
+        run: npm run build
+
+      - name: Crawler files are present
+        run: |
+          for f in index.html 404.html robots.txt sitemap.xml llms.txt site.webmanifest; do
+            test -s "dist/$f" || { echo "dist/$f lipsește sau e gol"; exit 1; }
+          done
+          grep -q '"@graph"' dist/index.html || { echo 'JSON-LD lipsește din dist/index.html'; exit 1; }
+          grep -q 'AMIHĂESEI' dist/index.html || { echo 'HTML-ul nu a fost prerandat'; exit 1; }

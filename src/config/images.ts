@@ -28,6 +28,12 @@ export interface SiteImage {
   alt: string
   /** `sizes` attribute describing the rendered width of the slot. */
   sizes: string
+  /**
+   * Average colour, shown while the file loads. Recompute after swapping a
+   * photo — see the note in `src/assets/images/README.md`. A stale value only
+   * means a slightly off placeholder, never a broken image.
+   */
+  bg: string
 }
 
 /** A career photo: a large variant for the frame plus a small one for the strip. */
@@ -60,12 +66,14 @@ export const images = {
   /** Hero background. */
   hero: {
     picture: heroFootball,
+    bg: '#332f20',
     alt: 'Tânăr fotbalist pe teren la apus',
     sizes: '100vw',
   },
   /** "01 Academia" section. */
   academy: {
     picture: trainingTeam,
+    bg: '#686751',
     alt: 'Antrenament coordonat pentru copiii academiei',
     sizes: '(max-width: 640px) 100vw, (max-width: 900px) 58vw, (max-width: 1320px) 34vw, 440px',
   },
@@ -73,30 +81,35 @@ export const images = {
   coachCareer: [
     {
       picture: coachCareer01,
+      bg: '#4a4a2e',
       thumb: coachCareer01Thumb,
       alt: 'Amihăesei Teodor, în echipament portocaliu, protejează mingea într-un meci de seniori',
       sizes: COACH_FRAME_SIZES,
     },
     {
       picture: coachCareer02,
+      bg: '#7c7854',
       thumb: coachCareer02Thumb,
       alt: 'Amihăesei Teodor conduce mingea pe extremă, în tricou roșu cu alb',
       sizes: COACH_FRAME_SIZES,
     },
     {
       picture: coachCareer03,
+      bg: '#726b56',
       thumb: coachCareer03Thumb,
       alt: 'Amihăesei Teodor pornește pe contraatac, în echipament bleu',
       sizes: COACH_FRAME_SIZES,
     },
     {
       picture: coachCareer04,
+      bg: '#78713a',
       thumb: coachCareer04Thumb,
       alt: 'Amihăesei Teodor controlează mingea lângă linia de margine, în echipament galben',
       sizes: COACH_FRAME_SIZES,
     },
     {
       picture: coachCareer05,
+      bg: '#9d995b',
       thumb: coachCareer05Thumb,
       alt: 'Amihăesei Teodor în timpul unui meci disputat pe stadion',
       sizes: COACH_FRAME_SIZES,
@@ -106,16 +119,19 @@ export const images = {
   values: [
     {
       picture: galleryHuddle,
+      bg: '#453a25',
       alt: 'Echipa și antrenorul, strânși în cerc cu mâinile în mijloc înainte de meci',
       sizes: VALUE_PANEL_SIZES,
     },
     {
       picture: trainingTeam,
+      bg: '#686751',
       alt: 'Antrenorul coordonează un exercițiu cu mingea la un antrenament al academiei',
       sizes: VALUE_PANEL_SIZES,
     },
     {
       picture: galleryDetail,
+      bg: '#3c3f32',
       alt: 'Prim-plan cu o gheată lovind mingea pe iarbă udă, cu noroi împrăștiat',
       sizes: VALUE_PANEL_SIZES,
     },
@@ -123,6 +139,7 @@ export const images = {
   /** Secțiunea "Unde ne găsești" — vedere aeriană cu terenul și Școala Mastacăn. */
   location: {
     picture: locationAerial,
+    bg: '#4d553c',
     alt: 'Vedere aeriană cu terenul de fotbal din Borlești și Școala Mastacăn alăturată, pe Strada Școlii',
     sizes: '(max-width: 640px) calc(100vw - 32px), (max-width: 1100px) 58vw, 708px',
   },
@@ -130,21 +147,25 @@ export const images = {
   gallery: [
     {
       picture: trainingTeam,
+      bg: '#686751',
       alt: 'Copii la un antrenament de fotbal Junior Borlești',
       sizes: '(max-width: 640px) 100vw, (max-width: 900px) 49vw, (max-width: 1320px) 41vw, 522px',
     },
     {
       picture: galleryHuddle,
+      bg: '#453a25',
       alt: 'Echipa de juniori într-un moment de unitate',
       sizes: '(max-width: 640px) 100vw, (max-width: 900px) 49vw, (max-width: 1320px) 57vw, 742px',
     },
     {
       picture: galleryDetail,
+      bg: '#3c3f32',
       alt: 'Detaliu cu mingea și ghetele pe teren',
       sizes: '(max-width: 900px) 100vw, (max-width: 1320px) 28vw, 363px',
     },
     {
       picture: heroFootball,
+      bg: '#332f20',
       alt: 'Tânăr fotbalist alergând cu mingea',
       sizes: '(max-width: 900px) 100vw, (max-width: 1320px) 28vw, 363px',
     },

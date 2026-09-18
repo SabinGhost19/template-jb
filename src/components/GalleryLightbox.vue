@@ -47,6 +47,7 @@ onBeforeUnmount(() => {
         :picture="image.picture"
         :alt="image.alt"
         sizes="min(1100px, 90vw)"
+        :background="image.bg"
         loading="eager"
       />
     </div>

@@ -309,3 +309,108 @@ picture {
     animation-iteration-count: 1 !important;
   }
 }
+
+/* ---------------------------------------------------------------------------
+ * Phones: one alignment, applied everywhere.
+ *
+ * The desktop layout is editorial and left-aligned across several columns. On a
+ * single narrow column that reads as ragged — the eyebrow, the heading, the
+ * paragraph and the buttons each start at the same edge but end in different
+ * places. Below this width everything is centred on one axis instead, and the
+ * buttons size to their label rather than stretching from edge to edge.
+ *
+ * Group rows keep their left alignment: they are a table of ages and years, and
+ * centring the columns would break the scan down the list.
+ * ------------------------------------------------------------------------- */
+
+@media (max-width: 640px) {
+  .hero-content,
+  .intro-copy,
+  .section-head,
+  .philosophy-head,
+  .philosophy-head > div,
+  .coach-copy,
+  .cta-inner,
+  .location-grid > div:first-child,
+  .benefit,
+  .value-body,
+  .footer-main,
+  .not-found-main {
+    text-align: center;
+  }
+
+  .section-head > p,
+  .intro-copy > p:last-child,
+  .philosophy-copy,
+  .coach-lead,
+  .coach-education,
+  .benefit p,
+  .value-line,
+  .not-found-main > p {
+    margin-inline: auto;
+  }
+
+  /* Icon + text rows have to centre as flex, not as text. */
+  .location-copy,
+  .value-body,
+  .not-found-actions,
+  .hero-actions {
+    align-items: center;
+  }
+
+  .location-copy {
+    justify-content: center;
+  }
+
+  .brand-mark,
+  .footer-main > a:last-child {
+    justify-content: center;
+  }
+
+  /* Buttons hug their label and sit slightly tighter than on desktop. */
+  .nav-cta,
+  .button-primary,
+  .button-dark,
+  .button-ghost {
+    width: auto;
+    min-width: 0;
+    max-width: 100%;
+    min-height: 46px;
+    padding-inline: 22px;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+ * Below-fold sections are skipped until they approach the viewport, so the
+ * first paint does not pay for laying out nine sections of photos. The
+ * intrinsic sizes keep the scrollbar honest and stop the page jumping.
+ *
+ * Only sections without an `id` are listed: nothing here can be the target of a
+ * navigation hash, so fragment links stay unaffected.
+ * ------------------------------------------------------------------------- */
+
+.benefits-section,
+.philosophy-section,
+.location-section {
+  content-visibility: auto;
+}
+
+.benefits-section {
+  contain-intrinsic-size: auto 1200px;
+}
+
+.philosophy-section {
+  contain-intrinsic-size: auto 900px;
+}
+
+.location-section {
+  contain-intrinsic-size: auto 800px;
+}
+
+@media print {
+  .benefits-section,
+  .philosophy-section,
+  .location-section {
+    content-visibility: visible;
+  }
+}

@@ -8,7 +8,7 @@ import { CONTACT } from '@/content/site'
   <section id="contact" class="cta-section" aria-labelledby="contact-titlu">
     <div class="page-shell cta-inner">
       <p class="eyebrow dark">Înscrieri 2026</p>
-      <h2 id="contact-titlu">VIITORII CAMPIONI<br /><em>ÎNCEP AICI.</em></h2>
+      <h2 id="contact-titlu">VIITORII CAMPIONI<br /><em>ÎNCEP AICI</em></h2>
       <p>Înscrierile pentru grupele de juniori sunt deschise.</p>
 
       <div class="cta-actions">
@@ -68,21 +68,19 @@ import { CONTACT } from '@/content/site'
 
 @media (max-width: 640px) {
   .cta-inner {
-    text-align: left;
     padding-block: 80px;
-  }
-
-  .cta-inner h2 {
-    font-size: 62px;
   }
 
   .cta-actions {
     flex-direction: column;
-    align-items: stretch;
+    align-items: center;
+    gap: 22px;
+    margin-top: 30px;
   }
 
   .phone-link {
     justify-content: center;
+    font-size: 30px;
   }
 }
 </style>

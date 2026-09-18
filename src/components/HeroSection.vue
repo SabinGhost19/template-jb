@@ -12,6 +12,7 @@ import { CONTACT } from '@/content/site'
       :picture="images.hero.picture"
       :alt="images.hero.alt"
       :sizes="images.hero.sizes"
+      :background="images.hero.bg"
       loading="eager"
       fetchpriority="high"
     />
@@ -19,7 +20,7 @@ import { CONTACT } from '@/content/site'
 
     <div class="hero-content page-shell">
       <p class="eyebrow reveal">Academie de fotbal • Borlești, Neamț</p>
-      <h1 id="hero-title" class="hero-title reveal">MAI MULT<br />DECÂT <span>FOTBAL.</span></h1>
+      <h1 id="hero-title" class="hero-title reveal">MAI MULT<br />DECÂT <span>FOTBAL</span></h1>
       <p class="hero-copy reveal">Formăm copii prin sport, disciplină și pasiune pentru fotbal.</p>
       <div class="hero-actions reveal">
         <a class="button-primary" :href="CONTACT.phoneHref">
@@ -177,6 +178,12 @@ import { CONTACT } from '@/content/site'
 }
 
 /* Landscape phones: a 100svh hero leaves no room for the title and buttons. */
+@media (max-width: 900px) {
+  .hero-content {
+    padding-top: 92px;
+  }
+}
+
 @media (orientation: landscape) and (max-height: 620px) {
   .hero,
   .hero-content {
@@ -197,7 +204,7 @@ import { CONTACT } from '@/content/site'
   .hero-content {
     justify-content: flex-end;
     min-height: 760px;
-    padding: 130px 0 150px;
+    padding: 90px 0 150px;
   }
 
   .hero-image {
@@ -221,7 +228,8 @@ import { CONTACT } from '@/content/site'
 
   .hero-actions {
     flex-direction: column;
-    align-items: stretch;
+    align-items: center;
+    gap: 10px;
   }
 
   .hero-meta {

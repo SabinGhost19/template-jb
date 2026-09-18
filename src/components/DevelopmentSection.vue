@@ -6,7 +6,7 @@ import { DEVELOPMENT_PILLARS } from '@/content/site'
   <section class="benefits-section section-pad" aria-labelledby="dezvoltare-titlu">
     <div class="page-shell">
       <div class="section-head">
-        <h2 id="dezvoltare-titlu">DEZVOLTĂM MAI MULT<br />DECÂT TEHNICĂ.</h2>
+        <h2 id="dezvoltare-titlu">DEZVOLTĂM MAI MULT<br />DECÂT TEHNICĂ</h2>
       </div>
 
       <div class="benefits-grid">

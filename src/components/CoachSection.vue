@@ -42,6 +42,7 @@ const counter = computed(() => `${pad(activeIndex.value + 1)} / ${pad(career.len
               :alt="index === activeIndex ? image.alt : ''"
               :aria-hidden="index === activeIndex ? undefined : 'true'"
               :sizes="image.sizes"
+              :background="image.bg"
             />
           </template>
           <figcaption>Conducem prin exemplu.</figcaption>
@@ -64,7 +65,12 @@ const counter = computed(() => `${pad(activeIndex.value + 1)} / ${pad(career.len
               @pointerenter="warm(index)"
               @focus="warm(index)"
             >
-              <ResponsivePicture :picture="image.thumb" alt="" :sizes="COACH_THUMB_SIZES" />
+              <ResponsivePicture
+                :picture="image.thumb"
+                alt=""
+                :sizes="COACH_THUMB_SIZES"
+                :background="image.bg"
+              />
             </button>
           </li>
         </ul>

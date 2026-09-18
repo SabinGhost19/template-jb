@@ -8,7 +8,7 @@ import { images } from '@/config/images'
     <div class="page-shell intro-grid">
       <div class="intro-copy">
         <p class="eyebrow dark">Mai mult decât un antrenament</p>
-        <h2 id="academie-titlu">FOTBAL PENTRU<br /><em>VIITOR.</em></h2>
+        <h2 id="academie-titlu">FOTBAL PENTRU<br /><em>VIITOR</em></h2>
         <p>
           Dăm startul unei experiențe în care fiecare copil învață să joace, să aibă încredere și să
           crească alături de o echipă.
@@ -20,6 +20,7 @@ import { images } from '@/config/images'
           :picture="images.academy.picture"
           :alt="images.academy.alt"
           :sizes="images.academy.sizes"
+          :background="images.academy.bg"
         />
         <figcaption>Metodă. Energie. Bucuria jocului.</figcaption>
       </figure>
@@ -79,6 +80,10 @@ import { images } from '@/config/images'
 
   .intro-image-wrap img {
     aspect-ratio: 4 / 3;
+  }
+
+  .intro-image-wrap figcaption {
+    display: none;
   }
 }
 </style>

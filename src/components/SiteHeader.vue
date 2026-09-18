@@ -1,36 +1,16 @@
 <script setup lang="ts">
-import { onBeforeUnmount, onMounted, ref, useTemplateRef } from 'vue'
-
 import AppIcon from '@/components/AppIcon.vue'
 import BrandMark from '@/components/BrandMark.vue'
-import { useEscapeKey } from '@/composables/useEscapeKey'
 import { NAV_LINKS } from '@/content/site'
-
-const isMenuOpen = ref(false)
-const header = useTemplateRef<HTMLElement>('header')
-const menuButton = useTemplateRef<HTMLButtonElement>('menuButton')
-
-function closeMenu({ restoreFocus = false } = {}) {
-  if (!isMenuOpen.value) return
-  isMenuOpen.value = false
-  if (restoreFocus) menuButton.value?.focus()
-}
-
-useEscapeKey(() => closeMenu({ restoreFocus: true }))
-
-/** Close the mobile menu when the user interacts anywhere outside the header. */
-function onPointerDown(event: PointerEvent) {
-  if (isMenuOpen.value && event.target instanceof Node && !header.value?.contains(event.target)) {
-    closeMenu()
-  }
-}
-
-onMounted(() => document.addEventListener('pointerdown', onPointerDown))
-onBeforeUnmount(() => document.removeEventListener('pointerdown', onPointerDown))
 </script>
 
 <template>
-  <header ref="header" class="site-nav">
+  <!--
+    Below 900px the bar keeps only the logo: the page is read by scrolling, so
+    the links and the call to action step aside. They stay in the markup for
+    crawlers and for anyone who resizes a window back up.
+  -->
+  <header class="site-nav">
     <BrandMark />
 
     <nav class="desktop-nav" aria-label="Navigație principală">
@@ -40,28 +20,9 @@ onBeforeUnmount(() => document.removeEventListener('pointerdown', onPointerDown)
     <a class="nav-cta" href="#contact">
       Înscrieri deschise <AppIcon name="arrow-right" :size="16" />
     </a>
-
-    <button
-      ref="menuButton"
-      type="button"
-      class="menu-button"
-      :aria-label="isMenuOpen ? 'Închide meniul' : 'Deschide meniul'"
-      :aria-expanded="isMenuOpen"
-      aria-controls="meniu-mobil"
-      @click="isMenuOpen ? closeMenu() : (isMenuOpen = true)"
-    >
-      <AppIcon v-if="isMenuOpen" name="x" />
-      <AppIcon v-else name="menu" />
-    </button>
-
-    <nav v-if="isMenuOpen" id="meniu-mobil" class="mobile-nav" aria-label="Navigație mobilă">
-      <a v-for="link in NAV_LINKS" :key="link.href" :href="link.href" @click="closeMenu()">
-        {{ link.label }}
-      </a>
-      <a class="button-primary" href="#contact" @click="closeMenu()">Înscrieri deschise</a>
-    </nav>
   </header>
 </template>
+
 <style>
 .site-nav {
   z-index: 40;
@@ -96,59 +57,16 @@ onBeforeUnmount(() => document.removeEventListener('pointerdown', onPointerDown)
   color: var(--primary);
 }
 
-.menu-button,
-.mobile-nav {
-  display: none;
-}
-
 @media (max-width: 900px) {
   .site-nav {
-    grid-template-columns: 1fr auto;
-    height: 78px;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    height: 76px;
   }
 
   .desktop-nav,
   .nav-cta {
     display: none;
-  }
-
-  .menu-button {
-    border: 1px solid color-mix(in oklab, var(--secondary-foreground) 35%, transparent);
-    place-items: center;
-    width: 44px;
-    height: 44px;
-    display: grid;
-    color: inherit;
-    background: none;
-  }
-
-  .mobile-nav {
-    background: var(--secondary);
-    border-top: 1px solid color-mix(in oklab, var(--secondary-foreground) 18%, transparent);
-    flex-direction: column;
-    padding: 28px max(28px, env(safe-area-inset-right, 0px)) 28px
-      max(28px, env(safe-area-inset-left, 0px));
-    max-height: calc(100svh - 78px);
-    overflow-y: auto;
-    overscroll-behavior: contain;
-    display: flex;
-    position: absolute;
-    top: 78px;
-    left: 0;
-    right: 0;
-  }
-
-  .mobile-nav > a:not(.button-primary) {
-    border-bottom: 1px solid color-mix(in oklab, var(--secondary-foreground) 14%, transparent);
-    padding: 16px 0;
-    font-family: var(--font-display);
-    text-transform: uppercase;
-    font-size: 28px;
-    font-weight: 700;
-  }
-
-  .mobile-nav .button-primary {
-    margin-top: 24px;
   }
 }
 </style>

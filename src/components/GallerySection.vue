@@ -30,7 +30,7 @@ const formatIndex = (index: number) => String(index + 1).padStart(2, '0')
   <section id="galerie" class="gallery-section section-pad" aria-labelledby="galerie-titlu">
     <div class="page-shell">
       <div class="section-head gallery-heading">
-        <h2 id="galerie-titlu">MOMENTE CARE<br />NE FORMEAZĂ.</h2>
+        <h2 id="galerie-titlu">MOMENTE CARE<br />NE FORMEAZĂ</h2>
         <p>Fiecare antrenament adaugă o lecție. Fiecare meci construiește o echipă.</p>
       </div>
 
@@ -44,7 +44,12 @@ const formatIndex = (index: number) => String(index + 1).padStart(2, '0')
           :aria-label="`Mărește imaginea ${formatIndex(index)}: ${image.alt}`"
           @click="openLightbox(index, $event)"
         >
-          <ResponsivePicture :picture="image.picture" :alt="image.alt" :sizes="image.sizes" />
+          <ResponsivePicture
+            :picture="image.picture"
+            :alt="image.alt"
+            :sizes="image.sizes"
+            :background="image.bg"
+          />
           <span aria-hidden="true"
             >{{ formatIndex(index) }} <AppIcon name="arrow-right" :size="16"
           /></span>

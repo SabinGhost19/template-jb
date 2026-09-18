@@ -12,8 +12,14 @@ const props = withDefaults(
     loading?: 'lazy' | 'eager'
     /** Set to `high` for the LCP image only. */
     fetchpriority?: 'high' | 'auto'
+    /**
+     * Average colour of the photo, painted as the `<img>` background until the
+     * file decodes. Costs nothing on the wire and removes the blank box you
+     * otherwise get when scrolling past a lazy image faster than it loads.
+     */
+    background?: string
   }>(),
-  { loading: 'lazy', fetchpriority: 'auto' },
+  { loading: 'lazy', fetchpriority: 'auto', background: undefined },
 )
 
 const MIME_TYPES: Record<string, string> = {
@@ -42,6 +48,7 @@ const mimeType = (format: string) => MIME_TYPES[format] ?? `image/${format}`
       :width="picture.img.w"
       :height="picture.img.h"
       :alt="alt"
+      :style="background ? { backgroundColor: background } : undefined"
       :loading="loading"
       :fetchpriority="props.fetchpriority === 'high' ? 'high' : undefined"
       :decoding="loading === 'lazy' ? 'async' : undefined"

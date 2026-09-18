@@ -31,6 +31,7 @@ import { LOCATION } from '@/content/site'
             :picture="images.location.picture"
             :alt="images.location.alt"
             :sizes="images.location.sizes"
+            :background="images.location.bg"
           />
         </a>
         <figcaption>{{ LOCATION.coordinates }}</figcaption>
