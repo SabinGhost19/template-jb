@@ -1,0 +1,71 @@
+/* Standalone 404 page (404.html) — reuses the design tokens and primitives from base.css. */
+
+.not-found {
+  background: var(--secondary);
+  color: var(--secondary-foreground);
+  min-height: 100svh;
+  flex-direction: column;
+  display: flex;
+}
+
+.not-found-header {
+  border-bottom: 1px solid color-mix(in oklab, var(--secondary-foreground) 16%, transparent);
+  align-items: center;
+  width: min(100% - 40px, 1360px);
+  height: 96px;
+  margin-inline: auto;
+  display: flex;
+}
+
+.not-found-main {
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  padding-block: 64px;
+  display: flex;
+}
+
+.not-found h1 {
+  max-width: 900px;
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  margin: 20px 0 22px;
+  font-size: clamp(52px, 8.4vw, 124px);
+  font-weight: 800;
+  line-height: 0.96;
+}
+
+.not-found h1 span {
+  color: var(--primary);
+}
+
+.not-found-main > p {
+  max-width: 480px;
+  color: color-mix(in oklab, var(--secondary-foreground) 78%, transparent);
+  margin: 0;
+  font-size: clamp(16px, 1.4vw, 20px);
+  line-height: 1.6;
+}
+
+.not-found-actions {
+  gap: 12px;
+  margin-top: 36px;
+  display: flex;
+}
+
+@media (max-width: 900px) {
+  .not-found-header {
+    height: 78px;
+  }
+}
+
+@media (max-width: 640px) {
+  .not-found-header {
+    width: min(100% - 32px, 1360px);
+  }
+
+  .not-found-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

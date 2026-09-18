@@ -1,0 +1,928 @@
+Pe lângă reproducerea 1:1 a designului și conținutului website-ului de referință, tratează acest proiect ca pe un website public, production-grade, care va fi accesibil oricui pe internet.
+
+OBIECTIV:
+
+Website-ul trebuie să fie:
+
+* extrem de profesionist
+* rapid
+* responsive
+* accesibil
+* sigur
+* SEO-ready
+* performant
+* robust
+* ușor de întreținut
+* fără erori
+* fără layout shifts
+* fără comportamente nefinisate
+* pregătit pentru deployment public.
+
+IMPORTANT:
+
+Nu modifica identitatea vizuală și nu face redesign.
+
+Toate cerințele de mai jos trebuie implementate astfel încât să păstreze designul existent 1:1.
+
+==================================================
+
+1. PRODUCTION QUALITY
+   ==================================================
+
+Nu considera proiectul terminat doar pentru că aplicația compilează.
+
+Trebuie verificat:
+
+* build production
+* runtime
+* console
+* network requests
+* broken assets
+* broken links
+* missing images
+* invalid HTML
+* hydration issues, dacă există
+* CSS overflow
+* horizontal scrolling
+* layout shifts
+* responsive behavior
+* accessibility
+* SEO
+* performance
+* loading states
+* error states.
+
+La final trebuie să existe:
+
+ZERO erori în browser console.
+
+ZERO broken links.
+
+ZERO broken images.
+
+ZERO unexpected horizontal scroll.
+
+ZERO text overflow.
+
+ZERO elemente care ies din viewport.
+
+ZERO placeholder content.
+
+ZERO lorem ipsum.
+
+ZERO TODO-uri vizibile.
+
+==================================================
+2. RESPONSIVE — REAL WORLD
+==========================
+
+Testează pagina la minimum:
+
+320px
+360px
+375px
+390px
+414px
+480px
+768px
+820px
+1024px
+1280px
+1440px
+1920px
+2560px
+
+Verifică fiecare secțiune la fiecare dimensiune.
+
+În special:
+
+* header
+* hero
+* typography
+* CTA buttons
+* images
+* gallery
+* groups
+* coach section
+* location
+* footer.
+
+Nu folosi doar două breakpoints:
+
+mobile / desktop.
+
+Responsive behavior trebuie să fie fluid.
+
+Folosește fluid typography și spacing acolo unde este potrivit.
+
+==================================================
+3. MOBILE FIRST QUALITY
+=======================
+
+Pe telefon:
+
+* nimic nu trebuie să fie înghesuit;
+* textul trebuie să rămână foarte lizibil;
+* CTA-urile trebuie să fie ușor de apăsat;
+* imaginile trebuie să aibă crop corect;
+* navigația trebuie să fie impecabilă;
+* secțiunile trebuie să păstreze ierarhia vizuală;
+* nu trebuie să existe horizontal scroll;
+* footer-ul trebuie să fie perfect aranjat.
+
+Nu micșora pur și simplu versiunea desktop.
+
+Construiește o adaptare atentă a aceluiași design.
+
+==================================================
+4. ACCESSIBILITY
+================
+
+Respectă WCAG 2.2 AA cât mai mult posibil fără să modifici designul.
+
+Implement:
+
+* semantic HTML5
+* header
+* nav
+* main
+* section
+* article unde este cazul
+* footer
+* proper heading hierarchy
+* accessible buttons
+* accessible links
+* keyboard navigation
+* visible focus states
+* aria-label unde este necesar
+* alt text pentru toate imaginile
+* decorative images marcate corespunzător
+* sufficient contrast
+* reduced motion support.
+
+Verifică:
+
+prefers-reduced-motion
+
+Dacă utilizatorul a dezactivat animațiile, redu sau elimină animațiile non-esențiale.
+
+Nu folosi elemente clickable construite din div-uri dacă un button sau anchor este semantic corect.
+
+==================================================
+5. IMAGINI
+==========
+
+Imaginile sunt foarte importante pentru acest website.
+
+Optimizează-le pentru web fără să compromiți aspectul vizual.
+
+Folosește, unde este posibil:
+
+WebP / AVIF
+
+și fallback dacă este necesar.
+
+Implement:
+
+* width
+* height
+* aspect-ratio
+
+pentru a preveni Cumulative Layout Shift.
+
+Folosește loading="lazy" pentru imaginile below-the-fold.
+
+Hero image:
+
+NU o lazy-load-ui dacă acest lucru afectează LCP.
+
+Folosește fetchpriority="high" pentru imaginea principală dacă este relevant.
+
+Imaginile trebuie să aibă:
+
+* alt text
+* dimensiuni determinate
+* crop stabil
+* object-position corect.
+
+Nu încărca imagini gigantice dacă sunt afișate la dimensiuni mici.
+
+==================================================
+6. PERFORMANCE
+==============
+
+Țintește:
+
+LCP < 2.5s
+INP < 200ms
+CLS < 0.1
+
+Optimizează:
+
+* JavaScript
+* CSS
+* fonts
+* images
+* bundle size
+* unnecessary dependencies
+* render blocking resources.
+
+Nu introduce biblioteci pentru lucruri care pot fi făcute simplu în CSS.
+
+Evita JavaScript pentru layout atunci când CSS poate face același lucru.
+
+Elimină dependencies nefolosite.
+
+Nu încărca librării globale inutile.
+
+==================================================
+7. FONT LOADING
+===============
+
+Fonturile trebuie încărcate profesional.
+
+Evită:
+
+FOIT
+FOUT excesiv
+layout shift.
+
+Folosește font-display corespunzător.
+
+Dacă fontul este local:
+
+preload doar pentru fonturile realmente critice.
+
+Nu încărca 10 greutăți de font dacă sunt folosite doar 2.
+
+==================================================
+8. SEO
+======
+
+Website-ul trebuie să fie optimizat pentru Google.
+
+Implement:
+
+<title>
+
+<meta name="description">
+
+canonical
+
+robots
+
+Open Graph
+
+Twitter/X card metadata
+
+favicon
+
+theme-color
+
+lang="ro"
+
+semantic HTML.
+
+Title:
+
+Junior Borlești | Academie de fotbal pentru copii
+
+Description trebuie să descrie natural academia, locația și activitatea.
+
+Nu face keyword stuffing.
+
+==================================================
+9. STRUCTURED DATA
+==================
+
+Adaugă JSON-LD relevant pentru organizație / sports organization / local business, dacă informațiile disponibile permit acest lucru.
+
+Nu inventa informații.
+
+Include doar informații reale disponibile:
+
+* name
+* description
+* location
+* telephone
+* URL
+* logo
+* image
+* address
+* sport.
+
+Dacă un câmp nu este cunoscut, NU îl inventa.
+
+==================================================
+10. FAVICON & BRANDING
+======================
+
+Website-ul trebuie să aibă branding complet:
+
+* favicon
+* apple touch icon dacă este relevant
+* Open Graph image
+* manifest dacă este relevant
+* theme-color.
+
+Logo-ul trebuie să fie folosit consistent.
+
+Nu folosi favicon generic Vite / Vue / Lovable.
+
+Elimină orice branding implicit al framework-ului sau tool-ului cu care a fost creat proiectul.
+
+Nu trebuie să existe absolut nicio urmă vizibilă de:
+
+Lovable
+Vite
+Vue starter
+template
+demo
+placeholder.
+
+==================================================
+11. SOCIAL SHARING
+==================
+
+Când URL-ul este distribuit pe:
+
+Facebook
+LinkedIn
+WhatsApp
+Discord
+Slack
+
+trebuie să existe preview corect:
+
+* title
+* description
+* image
+* URL.
+
+Configurează Open Graph corespunzător.
+
+Imaginea Open Graph trebuie să fie branduită profesional.
+
+==================================================
+12. NAVIGATION & UX
+===================
+
+Toate linkurile trebuie verificate.
+
+Anchor navigation:
+
+Academie
+Grupe
+Antrenor
+Galerie
+Contact
+
+trebuie să ducă exact la secțiunea corectă.
+
+Smooth scrolling trebuie să fie fluid.
+
+Dacă header-ul este sticky, asigură-te că anchor target-ul nu ajunge ascuns sub header.
+
+Folosește scroll-margin-top unde este necesar.
+
+După click pe o secțiune:
+
+* URL-ul trebuie să rămână coerent;
+* nu trebuie să existe jump-uri;
+* nu trebuie să existe layout shift.
+
+==================================================
+13. HEADER
+==========
+
+Header-ul este una dintre cele mai importante componente.
+
+Verifică:
+
+* sticky behavior
+* z-index
+* background
+* backdrop
+* border
+* mobile behavior
+* focus
+* active state
+* hover
+* scroll state.
+
+Nu lăsa header-ul să acopere conținutul.
+
+Pe mobile:
+
+* touch targets minimum aproximativ 44×44px;
+* meniul trebuie să fie ușor de utilizat;
+* focus management corect;
+* Escape trebuie să închidă meniul dacă există modal/mobile menu;
+* body scroll lock dacă meniul este overlay.
+
+==================================================
+14. BUTTONS & INTERACTIONS
+==========================
+
+Toate butoanele trebuie să aibă:
+
+* default
+* hover
+* active
+* focus
+* disabled dacă este cazul.
+
+Tranzițiile trebuie să fie scurte și elegante.
+
+Nu exagera cu animațiile.
+
+Touch interaction pe mobile trebuie să fie foarte bună.
+
+Nu folosi hover-only interactions pentru informații esențiale.
+
+==================================================
+15. FORMS / CONTACT
+===================
+
+Dacă există formular:
+
+implementează:
+
+* labels reale
+* autocomplete
+* validation
+* error messages
+* success state
+* keyboard support
+* accessible errors.
+
+Nu afișa erori generice precum:
+
+"Something went wrong."
+
+Mesajele trebuie să fie clare și în limba română.
+
+Dacă backend-ul nu există încă, NU simula că mesajul a fost trimis.
+
+În acest caz construiește frontend-ul astfel încât integrarea backend-ului să poată fi adăugată ulterior.
+
+==================================================
+16. PHONE & EMAIL
+=================
+
+Numerele de telefon trebuie să fie clickable pe mobile:
+
+tel:
+
+Dacă există email:
+
+mailto:
+
+Nu afișa informații de contact inventate.
+
+==================================================
+17. GOOGLE MAPS
+===============
+
+Linkul de locație trebuie să fie real și funcțional.
+
+Nu folosi iframe Google Maps dacă nu este necesar.
+
+Pentru un website de prezentare static, preferă un link către Google Maps dacă aceasta este abordarea existentă.
+
+==================================================
+18. SECURITY
+============
+
+Chiar dacă este un frontend static:
+
+* nu expune secrets;
+* nu include API keys private;
+* nu include tokens;
+* nu include credentials;
+* nu include .env secrets în repository;
+* nu introduce inline scripts inutil;
+* sanitizează orice input;
+* evită dangerouslySetInnerHTML dacă nu este absolut necesar.
+
+Verifică dependencies pentru vulnerabilități.
+
+Rulează auditul package managerului disponibil.
+
+Nu instala dependency-uri inutile.
+
+==================================================
+19. HTTP / SECURITY HEADERS
+===========================
+
+Dacă hosting provider-ul permite:
+
+configurează:
+
+Content-Security-Policy
+X-Content-Type-Options
+Referrer-Policy
+Permissions-Policy
+Strict-Transport-Security
+
+fără să blochezi accidental funcționalitatea website-ului.
+
+CSP trebuie să fie realistă pentru aplicația finală.
+
+Nu introduce o CSP copiată orbește care rupe fonturile, imaginile sau analytics.
+
+==================================================
+20. ERROR HANDLING
+==================
+
+Nu trebuie să existe:
+
+404 necontrolat
+broken image
+unhandled promise rejection
+console errors
+white screen.
+
+Dacă aplicația are routing:
+
+implementează un 404 elegant care păstrează brandingul.
+
+==================================================
+21. LOADING EXPERIENCE
+======================
+
+Website-ul este în principal un site de prezentare.
+
+NU adăuga loading screens inutile.
+
+Prioritatea este:
+
+HTML → CSS → hero → content.
+
+Utilizatorul trebuie să vadă conținutul cât mai repede.
+
+Dacă există loading pentru imagini, acesta trebuie să fie discret și să nu schimbe layout-ul.
+
+==================================================
+22. BROWSER COMPATIBILITY
+=========================
+
+Testează comportamentul pentru:
+
+Chrome
+Firefox
+Safari
+Edge
+
+și în special:
+
+iOS Safari
+Android Chrome
+
+Nu folosi CSS experimental fără fallback atunci când poate afecta utilizatorii reali.
+
+==================================================
+23. SEO CONTENT
+===============
+
+Heading hierarchy:
+
+H1:
+un singur H1 principal.
+
+H2:
+pentru secțiunile principale.
+
+H3:
+pentru subsecțiuni.
+
+Nu folosi heading-uri doar pentru styling.
+
+Nu ascunde text SEO într-un mod artificial.
+
+Conținutul trebuie să fie natural și orientat spre oameni.
+
+==================================================
+24. URL / DOMAIN READINESS
+==========================
+
+Nu hardcoda domeniul actual Lovable.
+
+Website-ul trebuie să poată fi mutat ulterior pe:
+
+juniorborlesti.ro
+
+sau alt domeniu.
+
+Centralizează:
+
+* site URL
+* metadata
+* Open Graph URL
+* canonical URL
+
+astfel încât domeniul să poată fi schimbat dintr-un singur loc.
+
+==================================================
+25. DEPLOYMENT READINESS
+========================
+
+Proiectul trebuie să aibă:
+
+production build funcțional.
+
+Verifică:
+
+npm run build
+
+sau echivalentul proiectului.
+
+Build-ul trebuie să fie:
+
+* clean
+* reproducibil
+* fără warnings importante
+* fără missing assets.
+
+Verifică și preview-ul production build.
+
+Nu considera dev server-ul suficient.
+
+==================================================
+26. ENVIRONMENT
+===============
+
+Separă clar:
+
+development
+production
+
+Nu hardcoda environment-specific configuration.
+
+Nu include secrets în frontend.
+
+Orice variabilă VITE_* trebuie tratată ca PUBLIC.
+
+Nu pune niciodată secret keys în VITE_*.
+
+==================================================
+27. CODE QUALITY
+================
+
+Codul trebuie să fie:
+
+* TypeScript strict
+* clar
+* modular
+* predictable
+* fără duplicate logic
+* fără dead code
+* fără comentarii inutile.
+
+Elimină:
+
+console.log
+debugger
+temporary hacks
+unused imports
+unused components
+unused CSS
+unused dependencies.
+
+Nu face abstraction over-engineering.
+
+Preferă cod simplu și clar.
+
+==================================================
+28. CSS QUALITY
+===============
+
+Nu folosi:
+
+!important
+
+decât în cazuri absolut justificate.
+
+Evită:
+
+magic numbers inutile
+negative margins excesive
+absolute positioning pentru layout
+fixed heights care rup responsive.
+
+Folosește:
+
+flex
+grid
+gap
+max-width
+clamp()
+min()
+max()
+calc()
+
+atunci când acestea produc un layout robust.
+
+==================================================
+29. DESIGN CONSISTENCY
+======================
+
+Toate acestea trebuie să fie consistente:
+
+* spacing
+* typography
+* borders
+* radius
+* colors
+* hover
+* focus
+* transitions.
+
+Nu introduce componente care arată ca și cum provin din alt website.
+
+Fiecare pixel trebuie să pară parte din același brand.
+
+==================================================
+30. PRINT
+=========
+
+Website-ul trebuie să aibă și un print stylesheet rezonabil.
+
+Dacă cineva tipărește pagina:
+
+* navigația nu trebuie să ocupe inutil pagina;
+* background-urile inutile pot fi eliminate;
+* textul trebuie să rămână lizibil;
+* imaginile importante trebuie păstrate.
+
+==================================================
+31. ANALYTICS
+=============
+
+NU instala analytics automat.
+
+Dacă va fi necesar ulterior, creează un punct clar de integrare.
+
+Nu adăuga Google Analytics, Meta Pixel sau alte tracking scripts fără o cerință explicită.
+
+==================================================
+32. COOKIE / PRIVACY
+====================
+
+Dacă nu există tracking/cookies non-esențiale, NU crea un cookie banner inutil.
+
+Dacă ulterior sunt adăugate servicii care necesită consimțământ, implementarea trebuie făcută separat și legal.
+
+==================================================
+33. LEGAL / TRUST
+=================
+
+Dacă sunt disponibile informații reale despre:
+
+* entitatea care operează academia;
+* date de contact;
+* politica de confidențialitate;
+* termeni;
+* fotografie;
+* utilizarea datelor copiilor;
+
+acestea trebuie tratate profesional.
+
+NU inventa date juridice.
+
+NU inventa CUI.
+
+NU inventa adresă juridică.
+
+NU inventa GDPR claims.
+
+==================================================
+34. CHILDREN / PRIVACY
+======================
+
+Este un website al unei academii pentru copii.
+
+Acordă o atenție specială imaginilor cu minori.
+
+Nu introduce funcționalități care colectează inutil:
+
+* nume complete
+* date personale
+* date despre copii
+* date sensibile.
+
+Dacă există ulterior un formular de înscriere, minimizează datele colectate și pregătește-l pentru o implementare privacy-by-design.
+
+Nu colecta date personale doar pentru analytics.
+
+==================================================
+35. PERFORMANCE BUDGET
+======================
+
+Țintește un website foarte lightweight.
+
+Evita:
+
+* framework-uri inutile;
+* animation libraries dacă CSS este suficient;
+* icon libraries dacă sunt folosite doar pentru câteva iconuri;
+* giant image files;
+* unnecessary JavaScript.
+
+Site-ul trebuie să se simtă instantaneu.
+
+==================================================
+36. LIGHTHOUSE
+==============
+
+Înainte de finalizare rulează Lighthouse / PageSpeed.
+
+Țintește aproximativ:
+
+Performance: 90+
+Accessibility: 95+
+Best Practices: 95+
+SEO: 95+
+
+Dacă scorul este mai mic:
+
+identifică problema reală și corecteaz-o.
+
+Nu modifica designul doar pentru a obține scor.
+
+==================================================
+37. FINAL QA CHECKLIST
+======================
+
+Înainte de a declara proiectul FINAL:
+
+[ ] Production build funcționează
+[ ] Nu există console errors
+[ ] Nu există console warnings importante
+[ ] Nu există broken images
+[ ] Nu există broken links
+[ ] Nu există horizontal overflow
+[ ] Desktop verificat
+[ ] Tablet verificat
+[ ] Mobile verificat
+[ ] iOS behavior verificat
+[ ] Accessibility verificată
+[ ] Keyboard navigation verificată
+[ ] Focus states verificate
+[ ] Alt text verificat
+[ ] Heading hierarchy verificată
+[ ] Meta title verificat
+[ ] Meta description verificată
+[ ] Canonical verificat
+[ ] Open Graph verificat
+[ ] Favicon verificat
+[ ] No Lovable branding
+[ ] No framework branding
+[ ] No placeholder text
+[ ] No lorem ipsum
+[ ] No fake data
+[ ] No fake testimonials
+[ ] No fake social proof
+[ ] No exposed secrets
+[ ] Dependencies verificate
+[ ] Images optimized
+[ ] CLS minimizat
+[ ] Hero/LCP optimizat
+[ ] 404 behavior verificat
+[ ] Links telefon verificate
+[ ] Google Maps link verificat
+[ ] Footer verificat
+[ ] Production preview verificat
+
+==================================================
+38. REGULA FINALĂ
+=================
+
+Gândește-te la acest website ca la un proiect care va fi văzut de:
+
+* părinți;
+* copii;
+* antrenori;
+* cluburi;
+* parteneri;
+* potențiali sponsori;
+* persoane care caută academia pe Google.
+
+Prima impresie trebuie să fie:
+
+PROFESIONAL
+ÎNCREDERE
+DISCIPLINĂ
+CALITATE
+MODERN
+PREMIUM
+SPORT
+COMUNITATE
+
+Dar fără să devină artificial, corporate sau „SaaS”.
+
+Păstrează designul original și identitatea Junior Borlești.
+
+Îmbunătățește doar ceea ce ține de calitatea tehnică, UX, accesibilitate, performanță, SEO, securitate și production readiness.
+
+La final, tratează website-ul ca pe un produs real, nu ca pe un demo.

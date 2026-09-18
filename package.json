@@ -1,0 +1,44 @@
+{
+  "name": "junior-borlesti",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Junior Borlești — academie de fotbal pentru copii (Borlești / Mastacăn, Piatra Neamț)",
+  "engines": {
+    "node": "^20.19.0 || >=22.12.0"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "run-s type-check build:client prerender",
+    "build:client": "vite build",
+    "prerender": "node scripts/prerender.mjs",
+    "preview": "vite preview",
+    "type-check": "vue-tsc --noEmit -p tsconfig.app.json --composite false",
+    "lint": "eslint . --fix",
+    "lint:check": "eslint .",
+    "format": "prettier --write src/ scripts/ index.html 404.html",
+    "format:check": "prettier --check src/ scripts/ index.html 404.html"
+  },
+  "dependencies": {
+    "vue": "^3.5.42"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.3",
+    "@tsconfig/node22": "^22.0.6",
+    "@types/node": "^22.18.0",
+    "@vitejs/plugin-vue": "^6.0.8",
+    "@vue/eslint-config-prettier": "^10.2.0",
+    "@vue/eslint-config-typescript": "^14.9.0",
+    "@vue/tsconfig": "^0.9.1",
+    "eslint": "^10.10.0",
+    "eslint-plugin-vue": "^10.11.0",
+    "jiti": "^2.7.0",
+    "npm-run-all2": "^9.0.3",
+    "prettier": "^3.9.6",
+    "tailwindcss": "^4.3.3",
+    "typescript": "~5.9.0",
+    "vite": "^8.3.0",
+    "vite-imagetools": "^12.0.1",
+    "vue-tsc": "^3.3.11"
+  }
+}

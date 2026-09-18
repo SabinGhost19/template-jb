@@ -1,0 +1,133 @@
+import coachCareer01 from '@/assets/images/coach-career-01.jpg?responsive'
+import coachCareer01Thumb from '@/assets/images/coach-career-01.jpg?thumb'
+import coachCareer02 from '@/assets/images/coach-career-02.jpg?responsive'
+import coachCareer02Thumb from '@/assets/images/coach-career-02.jpg?thumb'
+import coachCareer03 from '@/assets/images/coach-career-03.jpg?responsive'
+import coachCareer03Thumb from '@/assets/images/coach-career-03.jpg?thumb'
+import coachCareer04 from '@/assets/images/coach-career-04.jpg?responsive'
+import coachCareer04Thumb from '@/assets/images/coach-career-04.jpg?thumb'
+import coachCareer05 from '@/assets/images/coach-career-05.jpg?responsive'
+import coachCareer05Thumb from '@/assets/images/coach-career-05.jpg?thumb'
+import galleryDetail from '@/assets/images/gallery-detail.jpg?responsive'
+import galleryHuddle from '@/assets/images/gallery-huddle.jpg?responsive'
+import heroFootball from '@/assets/images/hero-football.jpg?responsive'
+import locationAerial from '@/assets/images/location-aerial.png?responsive'
+import trainingTeam from '@/assets/images/training-team.jpg?responsive'
+
+/** Output of the `?responsive` image preset (see `vite.config.ts`). */
+export interface ResponsivePicture {
+  /** `srcset` per modern format (e.g. `avif`, `webp`). */
+  sources: Record<string, string>
+  /** JPEG fallback plus intrinsic size, used for the `<img>` element. */
+  img: { src: string; w: number; h: number }
+}
+
+export interface SiteImage {
+  picture: ResponsivePicture
+  /** Accessible description. */
+  alt: string
+  /** `sizes` attribute describing the rendered width of the slot. */
+  sizes: string
+}
+
+/** A career photo: a large variant for the frame plus a small one for the strip. */
+export interface CoachCareerImage extends SiteImage {
+  thumb: ResponsivePicture
+}
+
+/**
+ * `sizes` for the archive strip. The slot is ~110 px wide, but the square crop
+ * scales landscape sources by height, so we ask for ~1.5× that width.
+ */
+export const COACH_THUMB_SIZES = '(max-width: 560px) 30vw, 160px'
+
+/** `sizes` for the large frame of the coach archive. */
+const COACH_FRAME_SIZES =
+  '(max-width: 560px) calc(100vw - 32px), (max-width: 860px) 520px, (max-width: 1360px) 44vw, 570px'
+
+/**
+ * Central image map — the single place that decides which file is shown where.
+ * Replace a file in `src/assets/images` (keeping its name) and everything updates.
+ */
+export const images = {
+  /** Hero background. */
+  hero: {
+    picture: heroFootball,
+    alt: 'Tânăr fotbalist pe teren la apus',
+    sizes: '100vw',
+  },
+  /** "01 Academia" section. */
+  academy: {
+    picture: trainingTeam,
+    alt: 'Antrenament coordonat pentru copiii academiei',
+    sizes: '(max-width: 640px) 100vw, (max-width: 900px) 58vw, (max-width: 1320px) 34vw, 440px',
+  },
+  /** "04 Antrenor" — arhiva de jucător, în ordinea din bandă (01 → 05). */
+  coachCareer: [
+    {
+      picture: coachCareer01,
+      thumb: coachCareer01Thumb,
+      alt: 'Amihăesei Teodor, în echipament portocaliu, protejează mingea într-un meci de seniori',
+      sizes: COACH_FRAME_SIZES,
+    },
+    {
+      picture: coachCareer02,
+      thumb: coachCareer02Thumb,
+      alt: 'Amihăesei Teodor conduce mingea pe extremă, în tricou roșu cu alb',
+      sizes: COACH_FRAME_SIZES,
+    },
+    {
+      picture: coachCareer03,
+      thumb: coachCareer03Thumb,
+      alt: 'Amihăesei Teodor pornește pe contraatac, în echipament bleu',
+      sizes: COACH_FRAME_SIZES,
+    },
+    {
+      picture: coachCareer04,
+      thumb: coachCareer04Thumb,
+      alt: 'Amihăesei Teodor controlează mingea lângă linia de margine, în echipament galben',
+      sizes: COACH_FRAME_SIZES,
+    },
+    {
+      picture: coachCareer05,
+      thumb: coachCareer05Thumb,
+      alt: 'Amihăesei Teodor în timpul unui meci disputat pe stadion',
+      sizes: COACH_FRAME_SIZES,
+    },
+  ],
+  /** Secțiunea "Unde ne găsești" — vedere aeriană cu terenul și Școala Mastacăn. */
+  location: {
+    picture: locationAerial,
+    alt: 'Vedere aeriană cu terenul de fotbal din Borlești și Școala Mastacăn alăturată, pe Strada Școlii',
+    sizes: '(max-width: 640px) calc(100vw - 32px), (max-width: 1100px) 58vw, 708px',
+  },
+  /** "05 Galerie" — order matters (01 → 04). */
+  gallery: [
+    {
+      picture: trainingTeam,
+      alt: 'Copii la un antrenament de fotbal Junior Borlești',
+      sizes: '(max-width: 640px) 100vw, (max-width: 900px) 49vw, (max-width: 1320px) 41vw, 522px',
+    },
+    {
+      picture: galleryHuddle,
+      alt: 'Echipa de juniori într-un moment de unitate',
+      sizes: '(max-width: 640px) 100vw, (max-width: 900px) 49vw, (max-width: 1320px) 57vw, 742px',
+    },
+    {
+      picture: galleryDetail,
+      alt: 'Detaliu cu mingea și ghetele pe teren',
+      sizes: '(max-width: 900px) 100vw, (max-width: 1320px) 28vw, 363px',
+    },
+    {
+      picture: heroFootball,
+      alt: 'Tânăr fotbalist alergând cu mingea',
+      sizes: '(max-width: 900px) 100vw, (max-width: 1320px) 28vw, 363px',
+    },
+  ],
+} satisfies {
+  hero: SiteImage
+  academy: SiteImage
+  coachCareer: readonly CoachCareerImage[]
+  location: SiteImage
+  gallery: readonly SiteImage[]
+}

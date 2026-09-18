@@ -1,0 +1,20 @@
+/*
+ * Global stylesheet.
+ *
+ * Tailwind is used only for its Preflight reset and the three utilities on <main>;
+ * every visual rule of the site lives in hand-written CSS ported 1:1 from the
+ * reference design. Section-specific rules are colocated with their components.
+ */
+@import 'tailwindcss';
+@import './fonts.css';
+@import './tokens.css';
+@import './base.css';
+
+@theme inline {
+  --font-sans: 'Manrope', sans-serif;
+  --font-display: 'Barlow Condensed', sans-serif;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-border: var(--border);
+}

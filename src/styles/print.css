@@ -1,0 +1,131 @@
+/*
+ * Print stylesheet: drop navigation, overlays and dark backgrounds, keep the
+ * editorial content and the photographs legible on paper.
+ * `!important` is required here to override the screen design colocated with components.
+ */
+@media print {
+  @page {
+    margin: 16mm;
+  }
+
+  html,
+  body,
+  main,
+  section,
+  footer,
+  .benefits-section,
+  .philosophy-section,
+  .cta-section,
+  .groups-section,
+  .gallery-section,
+  .location-section,
+  .footer {
+    background: #fff !important;
+    color: #000 !important;
+  }
+
+  .skip-link,
+  .site-nav,
+  .hero-shade,
+  .hero-actions,
+  .hero-meta,
+  .menu-button,
+  .mobile-nav,
+  .cta-actions,
+  .gallery-item > span,
+  .group-row svg,
+  .location-map,
+  .lightbox,
+  .text-link svg {
+    display: none !important;
+  }
+
+  .section-pad,
+  .cta-inner {
+    padding-block: 24px !important;
+  }
+
+  .hero,
+  .hero-content {
+    min-height: 0 !important;
+    padding: 0 0 24px !important;
+    color: #000 !important;
+  }
+
+  .hero-image {
+    position: static !important;
+    width: 100% !important;
+    height: auto !important;
+    max-height: 420px;
+    aspect-ratio: 3 / 2;
+    margin-bottom: 24px;
+  }
+
+  .hero-title span,
+  .hero-copy,
+  .philosophy-grid h2 span,
+  .location-grid h2 span,
+  .intro-copy h2 em,
+  .coach-copy h2 em,
+  .group-row strong,
+  .group-row svg,
+  .values,
+  .eyebrow,
+  .text-link,
+  .footer-main > p {
+    color: #000 !important;
+  }
+
+  .cta-inner h2 em {
+    color: #000 !important;
+    -webkit-text-stroke: 0 !important;
+  }
+
+  .group-detail {
+    opacity: 1 !important;
+    display: flex !important;
+  }
+
+  .reveal {
+    animation: none !important;
+  }
+
+  img {
+    filter: none !important;
+    break-inside: avoid;
+  }
+
+  .coach-image > span {
+    position: static !important;
+    writing-mode: horizontal-tb !important;
+    display: inline-block;
+    margin-top: 12px;
+  }
+
+  .gallery-grid {
+    grid-template-columns: 1fr 1fr !important;
+    grid-template-rows: auto !important;
+  }
+
+  .gallery-item-1,
+  .gallery-item-2,
+  .gallery-item-3,
+  .gallery-item-4 {
+    grid-area: auto !important;
+  }
+
+  .gallery-item img {
+    height: auto !important;
+    aspect-ratio: 4 / 3;
+  }
+
+  .text-link::after {
+    content: ' (' attr(href) ')';
+    text-transform: none;
+    font-size: 10px;
+  }
+
+  .footer {
+    border-top: 1px solid #000 !important;
+  }
+}
