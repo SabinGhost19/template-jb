@@ -5,7 +5,7 @@
   "type": "module",
   "description": "Junior Borlești — academie de fotbal pentru copii (Borlești / Mastacăn, Piatra Neamț)",
   "engines": {
-    "node": "^20.19.0 || >=22.12.0"
+    "node": "22.x"
   },
   "scripts": {
     "dev": "vite",

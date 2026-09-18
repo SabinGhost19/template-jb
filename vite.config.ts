@@ -254,6 +254,11 @@ ${COACH.education}
         if (isServerBuild || !ctx.path.endsWith('index.html') || ctx.path.includes('404')) {
           return html
         }
+        // Vite only substitutes %VITE_SITE_URL% when the variable itself is set.
+        // When the origin came from the host instead, the placeholders would be
+        // left as literals in canonical and Open Graph, so they are filled here.
+        html = html.replaceAll('%VITE_SITE_URL%', siteUrl)
+
         const tags =
           `    <link rel="alternate" hreflang="ro-RO" href="${siteUrl}/" />\n` +
           `    <link rel="alternate" hreflang="x-default" href="${siteUrl}/" />\n` +
@@ -296,16 +301,49 @@ ${COACH.education}
   }
 }
 
-// https://vite.dev/config/
-export default defineConfig(({ mode }) => {
-  const env = loadEnv(mode, process.cwd(), 'VITE_')
-  const siteUrl = (env.VITE_SITE_URL ?? '').trim().replace(/\/+$/, '')
+/**
+ * The absolute origin the site is published under, checked in this order:
+ *
+ *   1. `VITE_SITE_URL` from the process environment or from a local `.env`.
+ *   2. The domain the host hands the build. Vercel does not use `.env` files
+ *      committed to the repository — it replaces them with the project's own
+ *      environment variables — so without this fallback a fresh import fails
+ *      before it can build anything.
+ *
+ * Everything that has to name the site is derived from it: canonical, Open
+ * Graph, the JSON-LD graph, robots.txt, sitemap.xml and llms.txt. Set it
+ * explicitly in the host once the real domain is live, otherwise the
+ * deployment URL is used and search engines are pointed at *.vercel.app.
+ */
+function resolveSiteUrl(mode: string): string {
+  const hostDomain =
+    process.env.VERCEL_PROJECT_PRODUCTION_URL ?? process.env.VERCEL_URL ?? process.env.URL
+
+  const candidate =
+    loadEnv(mode, process.cwd(), 'VITE_').VITE_SITE_URL ??
+    process.env.VITE_SITE_URL ??
+    (hostDomain ? `https://${hostDomain.replace(/^https?:\/\//, '')}` : '')
+
+  const siteUrl = candidate.trim().replace(/\/+$/, '')
 
   if (!/^https?:\/\/[^/\s]+$/.test(siteUrl)) {
     throw new Error(
-      'VITE_SITE_URL must be an absolute origin without a path or trailing slash (see .env.example).',
+      [
+        'VITE_SITE_URL must be an absolute origin, with no path and no trailing slash.',
+        `  Received: ${JSON.stringify(candidate)}`,
+        '  Locally:  copy .env.example to .env (see the comments there).',
+        "  Hosting:  add VITE_SITE_URL under the project's environment variables",
+        '            (Vercel: Settings -> Environment Variables).',
+      ].join('\n'),
     )
   }
+
+  return siteUrl
+}
+
+// https://vite.dev/config/
+export default defineConfig(({ mode }) => {
+  const siteUrl = resolveSiteUrl(mode)
 
   return {
     plugins: [
