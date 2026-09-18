@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="ro">
+  <head>
+    <meta charset="utf-8" />
+    <title>Junior Borlești — Site nou</title>
+    <link rel="stylesheet" href="../assets/poster.css" />
+    <style>
+      /* The announcement is the one poster on the brand yellow and the one with
+         no photograph, so it stands apart in the feed from the other three. */
+      .poster {
+        background: var(--yellow);
+        color: var(--ink);
+      }
+
+      .copy {
+        position: absolute;
+        top: 318px;
+        left: var(--margin);
+        right: var(--margin);
+      }
+
+      .headline {
+        font-size: 136px;
+      }
+
+      /* One word reversed out in an ink block instead of an outline: the
+         renderer has no text-stroke, and solid contrast survives compression. */
+      .block {
+        display: inline-block;
+        padding: 4px 20px 12px;
+        margin: 10px 0 10px -20px;
+        background: var(--ink);
+        color: var(--yellow);
+      }
+
+      .url {
+        display: inline-block;
+        margin: 40px 0 0;
+        padding-bottom: 16px;
+        border-bottom: 8px solid var(--ink);
+        font-family: var(--display);
+        font-weight: 800;
+        font-size: 62px;
+        line-height: 1;
+        letter-spacing: 0.01em;
+      }
+
+      .what {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 66px 0 0;
+        padding: 0;
+        list-style: none;
+        border-top: 3px solid rgba(11, 10, 10, 0.26);
+      }
+
+      .what li {
+        box-sizing: border-box;
+        width: 460px;
+        padding: 30px 0 32px;
+        border-bottom: 3px solid rgba(11, 10, 10, 0.26);
+        font-family: var(--display);
+        font-weight: 700;
+        font-size: 42px;
+        line-height: 1;
+        text-transform: uppercase;
+      }
+
+      .what li span {
+        display: block;
+        margin-top: 10px;
+        font-family: var(--text);
+        font-weight: 400;
+        font-size: 19px;
+        line-height: 1.4;
+        letter-spacing: 0.01em;
+        text-transform: none;
+        color: rgba(11, 10, 10, 0.68);
+      }
+
+      .strip {
+        background: var(--ink);
+        color: var(--yellow);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="poster">
+      <div class="lockup">
+        <img src="../assets/logo-ink.svg" alt="" />
+        <span class="name">Junior<br />Borlești</span>
+      </div>
+
+      <div class="copy">
+        <p class="eyebrow">Academia are site</p>
+        <h1 class="headline">Acum suntem<br /><span class="block">online</span></h1>
+        <p class="url">juniorborlesti.ro</p>
+
+        <ul class="what">
+          <li>Grupe<span>U6 — U11, pe ani de naștere</span></li>
+          <li>Galerie<span>Fotografii de la antrenamente</span></li>
+          <li>Antrenor<span>Experiență și studii</span></li>
+          <li>Locație<span>Harta terenului din Borlești</span></li>
+        </ul>
+      </div>
+
+      <div class="strip">
+        <span>Tot ce contează, într-un singur loc</span>
+        <span>juniorborlesti.ro</span>
+      </div>
+    </div>
+  </body>
+</html>

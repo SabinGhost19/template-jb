@@ -1,0 +1,154 @@
+/* ---------------------------------------------------------------------------
+ * Posters for Meta (Facebook + Instagram feed).
+ *
+ * Canvas is 1080 x 1350 — the 4:5 ratio both platforms render natively and the
+ * tallest they allow in feed, so a post occupies as much of a phone screen as
+ * possible without being cropped.
+ *
+ * Fonts are merged single files (see build-fonts.py). Do not split them back
+ * into latin / latin-ext: Romanian needs glyphs from both subsets and the
+ * renderer mismatches glyph ids across two faces of the same weight.
+ *
+ * Layout is flexbox and absolute positioning only — no CSS grid, which the
+ * renderer supports unevenly.
+ * ------------------------------------------------------------------------- */
+
+@font-face {
+  font-family: 'JB Display';
+  font-weight: 800;
+  src: url('fonts/barlow-condensed-800.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'JB Display';
+  font-weight: 700;
+  src: url('fonts/barlow-condensed-700.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'JB Text';
+  font-weight: 400;
+  src: url('fonts/manrope-400.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'JB Text';
+  font-weight: 800;
+  src: url('fonts/manrope-800.ttf') format('truetype');
+}
+
+:root {
+  --yellow: #fac819;
+  --ink: #0b0a0a;
+  --cream: #f3f2ed;
+
+  --display: 'JB Display', sans-serif;
+  --text: 'JB Text', sans-serif;
+
+  /* One margin for every poster, so the four read as a set. */
+  --margin: 80px;
+  --strip: 104px;
+}
+
+@page {
+  size: 1080px 1350px;
+  margin: 0;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.poster {
+  position: relative;
+  width: 1080px;
+  height: 1350px;
+  overflow: hidden;
+  background: var(--ink);
+  color: var(--cream);
+  font-family: var(--text);
+  font-weight: 400;
+}
+
+/* Brand lockup ------------------------------------------------------------- */
+
+.lockup {
+  position: absolute;
+  top: var(--margin);
+  left: var(--margin);
+  display: flex;
+  align-items: center;
+}
+
+.lockup img {
+  width: 118px;
+  height: 102px;
+}
+
+.lockup .name {
+  margin-left: 22px;
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 40px;
+  line-height: 0.84;
+  letter-spacing: 0.015em;
+  text-transform: uppercase;
+}
+
+/* Type scale --------------------------------------------------------------- */
+
+.eyebrow {
+  margin: 0 0 22px;
+  font-family: var(--text);
+  font-weight: 800;
+  font-size: 21px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.headline {
+  margin: 0;
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 118px;
+  line-height: 0.88;
+  letter-spacing: 0.005em;
+  text-transform: uppercase;
+}
+
+.lede {
+  margin: 0;
+  font-size: 26px;
+  line-height: 1.6;
+  letter-spacing: 0.002em;
+}
+
+.accent {
+  color: var(--yellow);
+}
+
+.rule {
+  width: 104px;
+  height: 7px;
+  margin: 34px 0 28px;
+  background: var(--yellow);
+}
+
+/* Footer strip ------------------------------------------------------------- */
+
+.strip {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--strip);
+  padding: 0 var(--margin);
+  background: var(--yellow);
+  color: var(--ink);
+  font-weight: 800;
+  font-size: 20px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}

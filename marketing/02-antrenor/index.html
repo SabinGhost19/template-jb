@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="ro">
+  <head>
+    <meta charset="utf-8" />
+    <title>Junior Borlești — Antrenorul</title>
+    <link rel="stylesheet" href="../assets/poster.css" />
+    <style>
+      .photo {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 1080px;
+        height: 580px;
+        object-fit: cover;
+        object-position: 50% 26%;
+      }
+
+      .fade {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 1080px;
+        height: 580px;
+        background: linear-gradient(
+          180deg,
+          rgba(11, 10, 10, 0.82) 0%,
+          rgba(11, 10, 10, 0.28) 24%,
+          rgba(11, 10, 10, 0.1) 46%,
+          rgba(11, 10, 10, 1) 100%
+        );
+      }
+
+      .copy {
+        position: absolute;
+        bottom: calc(var(--strip) + 60px);
+        left: var(--margin);
+        right: var(--margin);
+      }
+
+      .headline {
+        font-size: 96px;
+      }
+
+      .role {
+        margin: 20px 0 0;
+        font-weight: 800;
+        font-size: 20px;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--yellow);
+      }
+
+      /* The three clubs read as a team sheet: condensed caps, hairline between,
+         nothing else competing for attention. */
+      .clubs {
+        margin: 36px 0 0;
+        padding: 0;
+        list-style: none;
+        border-bottom: 2px solid rgba(243, 242, 237, 0.24);
+      }
+
+      .clubs li {
+        padding: 19px 0;
+        border-top: 2px solid rgba(243, 242, 237, 0.24);
+        font-family: var(--display);
+        font-weight: 700;
+        font-size: 46px;
+        line-height: 1;
+        text-transform: uppercase;
+      }
+
+      .edu {
+        max-width: 880px;
+        margin: 28px 0 0;
+        font-size: 23px;
+        line-height: 1.58;
+        color: rgba(243, 242, 237, 0.76);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="poster">
+      <img class="photo" src="../assets/antrenor.jpg" alt="" />
+      <div class="fade"></div>
+
+      <div class="lockup">
+        <img src="../assets/logo-yellow.svg" alt="" />
+        <span class="name">Junior<br />Borlești</span>
+      </div>
+
+      <div class="copy">
+        <p class="eyebrow accent">Cine îi antrenează</p>
+        <h1 class="headline">Amihăesei<br /><span class="accent">Teodor</span></h1>
+        <p class="role">Antrenor Junior Borlești</p>
+
+        <ul class="clubs">
+          <li>Ceahlăul Piatra Neamț</li>
+          <li>CSU Alba Iulia</li>
+          <li>Șomuz Fălticeni</li>
+        </ul>
+
+        <p class="edu">
+          Licențiat la Universitatea „Vasile Alecsandri” din Bacău, Facultatea de Științe ale
+          Mișcării. Experiența din fotbalul de seniori, tradusă în antrenamente pe înțelesul
+          copiilor.
+        </p>
+      </div>
+
+      <div class="strip">
+        <span>Fost jucător · Antrenor de juniori</span>
+        <span>juniorborlesti.ro</span>
+      </div>
+    </div>
+  </body>
+</html>

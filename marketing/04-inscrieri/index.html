@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="ro">
+  <head>
+    <meta charset="utf-8" />
+    <title>Junior Borlești — Înscrieri deschise</title>
+    <link rel="stylesheet" href="../assets/poster.css" />
+    <style>
+      .photo {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 1080px;
+        height: 400px;
+        object-fit: cover;
+      }
+
+      .fade {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 1080px;
+        height: 400px;
+        background: linear-gradient(
+          180deg,
+          rgba(11, 10, 10, 0.8) 0%,
+          rgba(11, 10, 10, 0.3) 34%,
+          rgba(11, 10, 10, 0.34) 58%,
+          rgba(11, 10, 10, 1) 100%
+        );
+      }
+
+      .lockup {
+        top: 56px;
+      }
+
+      .copy {
+        position: absolute;
+        bottom: calc(var(--strip) + 64px);
+        left: var(--margin);
+        right: var(--margin);
+      }
+
+      .headline {
+        font-size: 104px;
+      }
+
+      /* The age groups are what a parent scans for first, so they get a real
+         table rather than a sentence buried in a paragraph. */
+      .groups {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 40px 0 0;
+        padding: 0;
+        list-style: none;
+        border-top: 2px solid rgba(243, 242, 237, 0.22);
+        border-left: 2px solid rgba(243, 242, 237, 0.22);
+      }
+
+      .groups li {
+        box-sizing: border-box;
+        width: 306px;
+        padding: 22px 22px 24px;
+        border-right: 2px solid rgba(243, 242, 237, 0.22);
+        border-bottom: 2px solid rgba(243, 242, 237, 0.22);
+      }
+
+      .groups b {
+        display: block;
+        font-family: var(--display);
+        font-weight: 800;
+        font-size: 62px;
+        line-height: 0.86;
+        color: var(--yellow);
+      }
+
+      .groups span {
+        display: block;
+        margin-top: 12px;
+        font-weight: 800;
+        font-size: 18px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: rgba(243, 242, 237, 0.66);
+      }
+
+      .call {
+        display: flex;
+        align-items: center;
+        margin: 46px 0 0;
+      }
+
+      .call .label {
+        width: 168px;
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 1.45;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: rgba(243, 242, 237, 0.66);
+      }
+
+      .call .phone {
+        margin-left: 26px;
+        font-family: var(--display);
+        font-weight: 800;
+        font-size: 92px;
+        line-height: 0.9;
+        color: var(--yellow);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="poster">
+      <img class="photo" src="../assets/antrenament.jpg" alt="" />
+      <div class="fade"></div>
+
+      <div class="lockup">
+        <img src="../assets/logo-yellow.svg" alt="" />
+        <span class="name">Junior<br />Borlești</span>
+      </div>
+
+      <div class="copy">
+        <p class="eyebrow accent">Locuri disponibile</p>
+        <h1 class="headline">Înscrieri<br /><span class="accent">deschise</span></h1>
+
+        <ul class="groups">
+          <li><b>U6</b><span>Născuți 2020</span></li>
+          <li><b>U7</b><span>Născuți 2019</span></li>
+          <li><b>U8</b><span>Născuți 2018</span></li>
+          <li><b>U9</b><span>Născuți 2017</span></li>
+          <li><b>U10</b><span>Născuți 2016</span></li>
+          <li><b>U11</b><span>Născuți 2015</span></li>
+        </ul>
+
+        <div class="call">
+          <span class="label">Sună pentru înscriere</span>
+          <span class="phone">0747 357 974</span>
+        </div>
+      </div>
+
+      <div class="strip">
+        <span>Terenul de lângă Școala Mastacăn</span>
+        <span>juniorborlesti.ro</span>
+      </div>
+    </div>
+  </body>
+</html>

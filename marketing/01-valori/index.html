@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="ro">
+  <head>
+    <meta charset="utf-8" />
+    <title>Junior Borlești — Nu formăm doar fotbaliști</title>
+    <link rel="stylesheet" href="../assets/poster.css" />
+    <style>
+      .photo {
+        position: absolute;
+        inset: 0;
+        width: 1080px;
+        height: 1350px;
+        object-fit: cover;
+      }
+
+      /* Four stops: clear at the top so the huddle reads, dark behind the logo
+         and dark again behind the copy. One gradient, no stacked overlays. */
+      .scrim {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          180deg,
+          rgba(11, 10, 10, 0.86) 0%,
+          rgba(11, 10, 10, 0.44) 14%,
+          rgba(11, 10, 10, 0.1) 27%,
+          rgba(11, 10, 10, 0.62) 54%,
+          rgba(11, 10, 10, 0.97) 82%
+        );
+      }
+
+      .copy {
+        position: absolute;
+        left: var(--margin);
+        right: var(--margin);
+        bottom: calc(var(--strip) + 72px);
+      }
+
+      .lede {
+        max-width: 800px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="poster">
+      <img class="photo" src="../assets/huddle.jpg" alt="" />
+      <div class="scrim"></div>
+
+      <div class="lockup">
+        <img src="../assets/logo-yellow.svg" alt="" />
+        <span class="name">Junior<br />Borlești</span>
+      </div>
+
+      <div class="copy">
+        <p class="eyebrow accent">Filosofia noastră</p>
+        <h1 class="headline">Nu formăm doar<br /><span class="accent">fotbaliști</span></h1>
+        <div class="rule"></div>
+        <p class="lede">
+          Respect față de coechipier, de adversar și de arbitru. Disciplina de a veni la timp și de
+          a duce lucrurile până la capăt. Pasiunea care nu are nevoie să fie împinsă de la spate.
+        </p>
+      </div>
+
+      <div class="strip">
+        <span>Academie de fotbal · U6 — U11</span>
+        <span>Borlești / Mastacăn, Neamț</span>
+      </div>
+    </div>
+  </body>
+</html>
