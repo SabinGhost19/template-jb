@@ -16,13 +16,19 @@ const closeButton = useTemplateRef<HTMLButtonElement>('closeButton')
 
 useEscapeKey(() => emit('close'))
 
+/** Restored on close: the page behind the dialog must not scroll under it. */
+let previousBodyOverflow = ''
+
 onMounted(() => {
   document.getElementById(APP_ROOT_ID)?.setAttribute('inert', '')
+  previousBodyOverflow = document.body.style.overflow
+  document.body.style.overflow = 'hidden'
   closeButton.value?.focus()
 })
 
 onBeforeUnmount(() => {
   document.getElementById(APP_ROOT_ID)?.removeAttribute('inert')
+  document.body.style.overflow = previousBodyOverflow
 })
 </script>
 
@@ -46,7 +52,7 @@ onBeforeUnmount(() => {
       <ResponsivePicture
         :picture="image.picture"
         :alt="image.alt"
-        sizes="min(1100px, 90vw)"
+        sizes="(max-width: 800px) calc(100vw - 32px), min(1100px, 92vw)"
         :background="image.bg"
         loading="eager"
       />
@@ -54,21 +60,42 @@ onBeforeUnmount(() => {
   </Teleport>
 </template>
 <style>
+/*
+ * A single grid cell that is exactly the visible viewport minus its padding,
+ * with the image constrained to that cell. `100dvh` rather than `100vh` so the
+ * collapsing browser chrome on a phone cannot push the bottom off screen.
+ */
 .lightbox {
+  --lightbox-gap: clamp(14px, 4vw, 40px);
+
   z-index: 100;
   background: color-mix(in oklab, var(--secondary) 94%, transparent);
+  grid-template-rows: minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr);
   place-items: center;
-  padding: 40px;
+  padding: var(--lightbox-gap);
+  padding-top: calc(var(--lightbox-gap) + env(safe-area-inset-top, 0px));
+  padding-bottom: calc(var(--lightbox-gap) + env(safe-area-inset-bottom, 0px));
   display: grid;
   position: fixed;
   inset: 0;
+  height: 100dvh;
+  overscroll-behavior: contain;
   cursor: zoom-out;
 }
 
+/*
+ * `width`/`height` are reset to auto so the intrinsic size coming from the
+ * element's own attributes cannot be clamped on each axis independently, which
+ * is what stretched the box out of proportion. With both dimensions auto, the
+ * two maximums scale the image together and keep its aspect ratio.
+ */
 .lightbox img {
   object-fit: contain;
-  max-width: min(1100px, 90vw);
-  max-height: 84vh;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
 }
 
 .lightbox button {
@@ -83,7 +110,14 @@ onBeforeUnmount(() => {
   place-items: center;
   display: grid;
   position: absolute;
-  top: 24px;
-  right: 24px;
+  top: calc(16px + env(safe-area-inset-top, 0px));
+  right: 16px;
+}
+
+@media (min-width: 801px) {
+  .lightbox button {
+    top: calc(24px + env(safe-area-inset-top, 0px));
+    right: 24px;
+  }
 }
 </style>
