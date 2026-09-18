@@ -3,7 +3,8 @@
  *   1. builds the SSR entry into dist/server,
  *   2. renders the app to a string,
  *   3. injects the markup into dist/index.html (the client bundle hydrates it),
- *   4. removes the temporary server build.
+ *   4. preloads the hero image, which is the LCP element,
+ *   5. removes the temporary server build.
  */
 import { readFile, rm, writeFile } from 'node:fs/promises'
 import path from 'node:path'
@@ -37,9 +38,37 @@ try {
     throw new Error(`Mount point ${mountPoint} not found in ${indexFile}`)
   }
 
-  const html = template.replace(mountPoint, `<div id="app">${await render()}</div>`)
+  const body = await render()
+  const html = injectHeroPreload(template, body).replace(mountPoint, `<div id="app">${body}</div>`)
   await writeFile(indexFile, html)
   console.log('prerendered dist/index.html')
 } finally {
   await rm(serverDir, { recursive: true, force: true })
+}
+
+/**
+ * The hero image is the LCP element, but the browser only discovers it after
+ * the render-blocking stylesheet has been fetched and parsed. A `<link
+ * rel="preload">` carrying the same srcset starts that download during head
+ * parsing instead. The `type` attribute means a browser without AVIF support
+ * simply skips the preload and falls back to the `<picture>` negotiation.
+ */
+function injectHeroPreload(template, body) {
+  // Anchored on the file name rather than on position: Vue's SSR output
+  // interleaves `<!--[-->` fragment markers between <picture> and <source>.
+  const hero = body.match(
+    /<source type="image\/avif" srcset="([^"]*hero-football[^"]*)" sizes="([^"]+)"/,
+  )
+
+  if (!hero) {
+    console.warn('hero preload skipped: no AVIF source found in the rendered markup')
+    return template
+  }
+
+  const [, srcset, sizes] = hero
+  const tag =
+    `    <link rel="preload" as="image" type="image/avif" fetchpriority="high" ` +
+    `imagesrcset="${srcset}" imagesizes="${sizes}" />\n`
+
+  return template.replace('  </head>', `${tag}  </head>`)
 }

@@ -36,7 +36,7 @@ import { CONTACT } from '@/content/site'
 
 .cta-inner h2 {
   margin-block: 28px;
-  font-size: clamp(64px, 9vw, 132px);
+  font-size: clamp(44px, 9vw, 132px);
 }
 
 .cta-inner h2 em {

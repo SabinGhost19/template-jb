@@ -47,6 +47,7 @@ import { CONTACT } from '@/content/site'
   border-top: 1px solid color-mix(in oklab, var(--secondary-foreground) 12%, transparent);
   justify-content: space-between;
   padding-block: 18px;
+  padding-bottom: calc(18px + env(safe-area-inset-bottom, 0px));
   display: flex;
   color: var(--muted-foreground);
   text-transform: uppercase;

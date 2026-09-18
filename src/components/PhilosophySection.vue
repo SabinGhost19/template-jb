@@ -37,7 +37,7 @@
   text-transform: uppercase;
   grid-column: 1 / -1;
   margin: 28px 0 24px;
-  font-size: clamp(60px, 9.2vw, 140px);
+  font-size: clamp(44px, 9.2vw, 140px);
   font-weight: 800;
   line-height: 0.96;
 }

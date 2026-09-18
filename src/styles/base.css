@@ -11,6 +11,9 @@
 html {
   scroll-behavior: smooth;
   background: var(--background);
+  /* iOS inflates text in landscape unless this is pinned. */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 body {
@@ -19,6 +22,25 @@ body {
   font-family: var(--font-sans);
   letter-spacing: 0;
   margin: 0;
+  -webkit-tap-highlight-color: color-mix(in oklab, var(--primary) 28%, transparent);
+}
+
+/* Long Romanian compounds must never push a section sideways on a 320 px phone. */
+h1,
+h2,
+h3,
+p,
+li,
+figcaption {
+  overflow-wrap: break-word;
+}
+
+/* Skips the legacy 300 ms tap delay on touch devices. */
+a,
+button,
+summary,
+[role='button'] {
+  touch-action: manipulation;
 }
 
 a {
@@ -33,8 +55,16 @@ button {
 
 /* Layout shell ------------------------------------------------------------ */
 
+/*
+ * `viewport-fit=cover` lets full-bleed backgrounds run under a notch, so the
+ * shell subtracts the safe-area insets to keep text clear of it in landscape.
+ * env() resolves to 0px where there is no notch.
+ */
 .page-shell {
-  width: min(100% - 40px, 1280px);
+  width: min(
+    100% - 40px - env(safe-area-inset-left, 0px) - env(safe-area-inset-right, 0px),
+    1280px
+  );
   margin-inline: auto;
 }
 
@@ -67,7 +97,7 @@ button {
   font-family: var(--font-display);
   text-transform: uppercase;
   margin: 16px 0 28px;
-  font-size: clamp(52px, 6.6vw, 98px);
+  font-size: clamp(40px, 7vw, 98px);
   font-weight: 800;
   line-height: 0.98;
 }
@@ -169,25 +199,35 @@ button {
 .brand-mark {
   font-family: var(--font-display);
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   font-weight: 800;
   line-height: 0.8;
   display: flex;
 }
 
-.brand-shield {
-  background: var(--primary);
-  width: 42px;
-  height: 48px;
-  color: var(--primary-foreground);
-  clip-path: polygon(8% 0, 92% 0, 100% 72%, 50% 100%, 0 72%);
-  place-items: center;
-  font-size: 18px;
-  display: grid;
+/*
+ * The JB monogram, coloured by `currentColor`: yellow on the dark header and
+ * footer, ink wherever the surface is light. Its aspect ratio comes from the
+ * artwork (339 × 292), so the box is declared rather than measured.
+ */
+.brand-logo {
+  color: var(--primary);
+  aspect-ratio: 339 / 292;
+  width: auto;
+  height: 42px;
+  flex: none;
+  display: block;
 }
 
 .brand-name {
   font-size: 16px;
+  letter-spacing: 0.01em;
+}
+
+@media (max-width: 900px) {
+  .brand-logo {
+    height: 36px;
+  }
 }
 
 /* Responsive images: <picture> must not add boxes around the <img> ----------- */
@@ -253,13 +293,6 @@ picture {
 
   .section-head {
     margin-bottom: 44px;
-  }
-
-  .intro-copy h2,
-  .section-head h2,
-  .coach-copy h2,
-  .location-grid h2 {
-    font-size: 48px;
   }
 }
 

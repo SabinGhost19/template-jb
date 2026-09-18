@@ -41,6 +41,13 @@ export interface CoachCareerImage extends SiteImage {
  */
 export const COACH_THUMB_SIZES = '(max-width: 560px) 30vw, 160px'
 
+/**
+ * `sizes` for a philosophy panel. The panels grow and shrink as you pick one,
+ * so this declares the widest state — the browser must never be caught with a
+ * variant that is too small for the expanded panel.
+ */
+const VALUE_PANEL_SIZES = '(max-width: 860px) calc(100vw - 32px), (max-width: 1360px) 52vw, 700px'
+
 /** `sizes` for the large frame of the coach archive. */
 const COACH_FRAME_SIZES =
   '(max-width: 560px) calc(100vw - 32px), (max-width: 860px) 520px, (max-width: 1360px) 44vw, 570px'
@@ -95,6 +102,24 @@ export const images = {
       sizes: COACH_FRAME_SIZES,
     },
   ],
+  /** "Filosofia noastră" — câte o fotografie pentru fiecare valoare, în ordinea din VALUES. */
+  values: [
+    {
+      picture: galleryHuddle,
+      alt: 'Echipa și antrenorul, strânși în cerc cu mâinile în mijloc înainte de meci',
+      sizes: VALUE_PANEL_SIZES,
+    },
+    {
+      picture: trainingTeam,
+      alt: 'Antrenorul coordonează un exercițiu cu mingea la un antrenament al academiei',
+      sizes: VALUE_PANEL_SIZES,
+    },
+    {
+      picture: galleryDetail,
+      alt: 'Prim-plan cu o gheată lovind mingea pe iarbă udă, cu noroi împrăștiat',
+      sizes: VALUE_PANEL_SIZES,
+    },
+  ],
   /** Secțiunea "Unde ne găsești" — vedere aeriană cu terenul și Școala Mastacăn. */
   location: {
     picture: locationAerial,
@@ -128,6 +153,7 @@ export const images = {
   hero: SiteImage
   academy: SiteImage
   coachCareer: readonly CoachCareerImage[]
+  values: readonly SiteImage[]
   location: SiteImage
   gallery: readonly SiteImage[]
 }

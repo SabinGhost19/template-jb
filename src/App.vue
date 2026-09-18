@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import BrandSprite from '@/components/BrandSprite.vue'
 import SiteHeader from '@/components/SiteHeader.vue'
 import HeroSection from '@/components/HeroSection.vue'
 import AcademySection from '@/components/AcademySection.vue'
@@ -14,6 +15,7 @@ import SiteFooter from '@/components/SiteFooter.vue'
 
 <template>
   <a class="skip-link" href="#top">Sari la conținut</a>
+  <BrandSprite />
   <SiteHeader />
   <main id="top" class="overflow-hidden bg-background text-foreground">
     <HeroSection />

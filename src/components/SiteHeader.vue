@@ -126,7 +126,11 @@ onBeforeUnmount(() => document.removeEventListener('pointerdown', onPointerDown)
     background: var(--secondary);
     border-top: 1px solid color-mix(in oklab, var(--secondary-foreground) 18%, transparent);
     flex-direction: column;
-    padding: 28px;
+    padding: 28px max(28px, env(safe-area-inset-right, 0px)) 28px
+      max(28px, env(safe-area-inset-left, 0px));
+    max-height: calc(100svh - 78px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
     display: flex;
     position: absolute;
     top: 78px;

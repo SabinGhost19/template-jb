@@ -92,7 +92,7 @@ import { CONTACT } from '@/content/site'
   font-family: var(--font-display);
   text-transform: uppercase;
   margin: 24px 0 26px;
-  font-size: clamp(64px, 8.8vw, 138px);
+  font-size: clamp(44px, 9vw, 138px);
   font-weight: 800;
   line-height: 0.96;
 }
@@ -122,6 +122,7 @@ import { CONTACT } from '@/content/site'
   align-items: center;
   gap: 40px;
   padding-block: 24px;
+  padding-bottom: calc(24px + env(safe-area-inset-bottom, 0px));
   display: grid;
   position: absolute;
   bottom: 0;
@@ -175,6 +176,19 @@ import { CONTACT } from '@/content/site'
   }
 }
 
+/* Landscape phones: a 100svh hero leaves no room for the title and buttons. */
+@media (orientation: landscape) and (max-height: 620px) {
+  .hero,
+  .hero-content {
+    min-height: 560px;
+  }
+
+  .hero-content {
+    padding-top: 110px;
+    padding-bottom: 72px;
+  }
+}
+
 @media (max-width: 640px) {
   .hero {
     min-height: 760px;
@@ -205,10 +219,6 @@ import { CONTACT } from '@/content/site'
     );
   }
 
-  .hero-title {
-    font-size: 56px;
-  }
-
   .hero-actions {
     flex-direction: column;
     align-items: stretch;
@@ -218,6 +228,7 @@ import { CONTACT } from '@/content/site'
     grid-template-columns: 1fr auto;
     gap: 8px;
     padding-block: 16px;
+    padding-bottom: calc(16px + env(safe-area-inset-bottom, 0px));
   }
 
   .hero-meta span:nth-child(2) {

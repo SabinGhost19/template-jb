@@ -1,19 +1,37 @@
-/* Design tokens extracted from the reference site (OKLCH). */
+/* ---------------------------------------------------------------------------
+ * Design tokens (OKLCH).
+ *
+ * The palette is derived from the logo, not chosen next to it: the yellow and
+ * the black are sampled straight out of `src/assets/images/brand.png`, and
+ * everything else is built around that hue. See `src/assets/brand/README.md`
+ * for the manual (hex values, usage, clear space, misuse).
+ * ------------------------------------------------------------------------- */
 :root {
-  --background: oklch(96% 0.006 95);
-  --foreground: oklch(13% 0.006 85);
-  --card: oklch(98.5% 0.004 95);
-  --card-foreground: oklch(13% 0.006 85);
-  --primary: oklch(87% 0.185 94);
-  --primary-foreground: oklch(13% 0.006 85);
-  --secondary: oklch(18% 0.006 85);
-  --secondary-foreground: oklch(96% 0.006 95);
+  /* --- Brand, sampled from the artwork ---------------------------------- */
+
+  /** #FAC819 — the logo yellow. The single accent; never two at once. */
+  --brand-yellow: oklch(85% 0.17 90);
+  /** #0B0A0A — the logo black. Warmer and deeper than the old near-black. */
+  --brand-ink: oklch(15% 0.002 17);
+
+  /* --- Semantic tokens --------------------------------------------------- */
+
+  --background: oklch(96% 0.006 92);
+  --foreground: oklch(15% 0.002 17);
+  --card: oklch(98.5% 0.004 92);
+  --card-foreground: oklch(15% 0.002 17);
+  --primary: var(--brand-yellow);
+  --primary-foreground: oklch(15% 0.002 17);
+  --secondary: oklch(19% 0.003 60);
+  --secondary-foreground: oklch(96% 0.006 92);
   --muted: oklch(89% 0.008 90);
   --muted-foreground: oklch(49% 0.012 85);
-  --accent: oklch(76% 0.16 91);
-  --accent-foreground: oklch(13% 0.006 85);
+  /** Pressed / hovered state of the brand yellow — same hue, one step down. */
+  --accent: oklch(74% 0.148 88);
+  --accent-foreground: oklch(15% 0.002 17);
   --border: oklch(76% 0.008 90);
   --input: oklch(82% 0.008 90);
-  --ring: oklch(87% 0.185 94);
+  --ring: var(--brand-yellow);
+  /** Pitch green, the one non-brand hue: used only for large field surfaces. */
   --pitch: oklch(32% 0.07 145);
 }

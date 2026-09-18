@@ -8,6 +8,7 @@
   Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
   Cross-Origin-Opener-Policy: same-origin
 
+# Hashed filenames, so they can never go stale.
 /assets/*
   Cache-Control: public, max-age=31536000, immutable
 
@@ -16,3 +17,25 @@
 
 /icons/*
   Cache-Control: public, max-age=604800
+
+# The page itself must be revalidated, otherwise a deploy is invisible to
+# anyone who already has it cached.
+/
+  Cache-Control: public, max-age=0, must-revalidate
+
+/index.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+# Crawler-facing files: cached for a day, and served as UTF-8 text so the
+# Romanian diacritics survive.
+/robots.txt
+  Cache-Control: public, max-age=86400
+  Content-Type: text/plain; charset=utf-8
+
+/llms.txt
+  Cache-Control: public, max-age=86400
+  Content-Type: text/plain; charset=utf-8
+
+/sitemap.xml
+  Cache-Control: public, max-age=86400
+  Content-Type: application/xml; charset=utf-8

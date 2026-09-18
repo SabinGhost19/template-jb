@@ -99,6 +99,29 @@ export const DEVELOPMENT_PILLARS: readonly DevelopmentPillar[] = [
   },
 ]
 
+export interface Value {
+  /** Cuvântul afișat mare pe panou. */
+  word: string
+  /** O singură frază, citibilă dintr-o privire. */
+  line: string
+}
+
+/** Cele trei valori din secțiunea „Filosofia noastră”. */
+export const VALUES: readonly Value[] = [
+  {
+    word: 'Respect',
+    line: 'Față de coechipier, de adversar și de arbitru. Se învață pe teren și se vede în afara lui.',
+  },
+  {
+    word: 'Disciplină',
+    line: 'Vii la timp, dai tot ce poți, duci lucrurile până la capăt. Simplu de spus, greu de făcut.',
+  },
+  {
+    word: 'Pasiune',
+    line: 'Copiii care iubesc jocul nu trebuie împinși de la spate. Asta hrănim la fiecare antrenament.',
+  },
+]
+
 export interface CoachProfile {
   role: string
   /** Fraza de introducere de sub nume. */

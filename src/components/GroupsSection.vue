@@ -108,19 +108,66 @@ import { AGE_GROUPS } from '@/content/site'
   }
 }
 
+/*
+ * On phones the row stacks instead of dropping the description: the age code
+ * keeps its column, the year and the focus stack beside it. Hover does not
+ * exist on touch, so the detail is shown outright rather than revealed.
+ */
 @media (max-width: 640px) {
   .group-row {
-    grid-template-columns: 90px 1fr auto;
-    gap: 12px;
-    min-height: 100px;
+    grid-template-areas:
+      'code year'
+      'code detail';
+    grid-template-columns: 88px minmax(0, 1fr);
+    align-content: center;
+    gap: 6px 16px;
+    min-height: 104px;
+    padding-block: 16px;
   }
 
   .group-row strong {
-    font-size: 54px;
+    grid-area: code;
+    align-self: center;
+    font-size: 52px;
+  }
+
+  .group-year {
+    grid-area: year;
+    align-self: end;
   }
 
   .group-detail {
+    opacity: 1;
+    grid-area: detail;
+    align-self: start;
+    display: flex;
+    transform: none;
+  }
+
+  .group-detail b {
+    font-size: 19px;
+  }
+
+  .group-row svg {
     display: none;
+  }
+
+  .group-row:hover {
+    padding-inline: 0;
+  }
+
+  .group-row:hover .group-detail {
+    transform: none;
+  }
+}
+
+@media (max-width: 380px) {
+  .group-row {
+    grid-template-columns: 70px minmax(0, 1fr);
+  }
+
+  .group-row strong {
+    font-size: 42px;
   }
 }
 </style>

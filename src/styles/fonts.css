@@ -1,7 +1,32 @@
 /*
  * Self-hosted web fonts (Google Fonts, SIL Open Font License).
  * Subsets: latin + latin-ext (Romanian diacritics). Only the weights used by the design are shipped.
+ *
+ * Each family also declares a metric-matched fallback built on the local system
+ * sans. `font-display: swap` means the first paint uses the fallback, and
+ * without these overrides the swap would visibly reflow the display headings —
+ * Barlow Condensed is ~18% narrower than Arial. The numbers come from the font
+ * tables: average lowercase advance and hhea ascent/descent, expressed against
+ * the adjusted em.
  */
+
+@font-face {
+  font-family: 'Barlow Condensed Fallback';
+  src: local('Arial'), local('Helvetica'), local('Roboto'), local('DejaVu Sans');
+  size-adjust: 82%;
+  ascent-override: 121.9%;
+  descent-override: 24.4%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: 'Manrope Fallback';
+  src: local('Arial'), local('Helvetica'), local('Roboto'), local('DejaVu Sans');
+  size-adjust: 98%;
+  ascent-override: 108.8%;
+  descent-override: 30.6%;
+  line-gap-override: 0%;
+}
 
 @font-face {
   font-family: 'Barlow Condensed';
