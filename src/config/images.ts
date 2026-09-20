@@ -102,14 +102,14 @@ export const images = {
     },
     {
       picture: matchday03,
-      bg: '#6e6b55',
-      alt: 'Grupa strânsă în jurul mingii, la marginea terenului',
+      bg: '#737b65',
+      alt: 'Antrenorul traversează terenul, copiii desfășurați în spatele lui, sub un cer înnorat',
       sizes: MATCHDAY_SIZES,
     },
     {
       picture: matchday04,
-      bg: '#79834d',
-      alt: 'Doi copii aleargă spre minge pe terenul sintetic',
+      bg: '#757f4d',
+      alt: 'Dispută pentru minge între trei copii, în mijlocul terenului',
       sizes: MATCHDAY_SIZES,
     },
     {

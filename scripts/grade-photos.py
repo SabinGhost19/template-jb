@@ -37,8 +37,8 @@ PHOTOS = [
     # The hero is not produced here: it is `hero-football.jpg`, kept as supplied.
     ('during-match/IMG_8167.JPEG', 'matchday-01.jpg', 16 / 9, 0.46),
     ('during-match/IMG_8115.JPEG', 'matchday-02.jpg', 16 / 9, 0.5),
-    ('during-match/IMG_8184.JPEG', 'matchday-03.jpg', 16 / 9, 0.48),
-    ('during-match/IMG_8176.JPEG', 'matchday-04.jpg', 16 / 9, 0.52),
+    ('during-match/IMG_8153.JPEG', 'matchday-03.jpg', 16 / 9, 0.5),
+    ('during-match/IMG_8200.JPEG', 'matchday-04.jpg', 16 / 9, 0.38),
     ('during-match/IMG_8201.JPEG', 'matchday-05.jpg', 16 / 9, 0.52),
     # The three values in the philosophy section.
     ('relationship-teamwork/IMG_8137.JPEG', 'value-respect.jpg', 4 / 5, 0.44),
@@ -55,9 +55,10 @@ PHOTOS = [
     ('training/IMG_8164.JPEG', 'gallery-06.jpg', 4 / 3, 0.5),
 ]
 
-# Frames kept in `new-images-training` but not published: relationship-teamwork
-# IMG_8134, training IMG_8064 and IMG_8065. They duplicate the framing of ones
-# already in use — add them here if a section needs more.
+# Frames kept in `new-images-training` but not published: during-match IMG_8176
+# and IMG_8184, relationship-teamwork IMG_8134, training IMG_8064 and IMG_8065.
+# They duplicate the framing of ones already in use — add them here if a section
+# needs more.
 _RESERVE = [
 ]
 
