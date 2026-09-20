@@ -65,8 +65,13 @@ const formatIndex = (index: number) => String(index + 1).padStart(2, '0')
   margin-bottom: 64px;
 }
 
+/*
+ * Six frames on an asymmetric mosaic: one tall portrait anchors the left, two
+ * wide frames carry the group shots, three squares hold the close action. The
+ * shapes follow what is in each photograph rather than a uniform grid.
+ */
 .gallery-grid {
-  grid-template-rows: 280px 360px;
+  grid-template-rows: 280px 360px 320px;
   grid-template-columns: 1.15fr 0.8fr 0.8fr;
   gap: 16px;
   display: grid;
@@ -89,8 +94,14 @@ const formatIndex = (index: number) => String(index + 1).padStart(2, '0')
   grid-column: 2 / 4;
 }
 
-.gallery-item-4 {
+.gallery-item-5 {
+  grid-column: 1 / 3;
+  grid-row: 3;
+}
+
+.gallery-item-6 {
   grid-column: 3;
+  grid-row: 3;
 }
 
 .gallery-item img {
@@ -123,9 +134,20 @@ const formatIndex = (index: number) => String(index + 1).padStart(2, '0')
   right: 14px;
 }
 
+/*
+ * Below this width the muted state is dropped entirely. It exists to reward a
+ * hover, and on a touch screen there is no hover to reward — the photographs
+ * would simply sit there washed out for everyone.
+ */
+@media (hover: none), (max-width: 900px) {
+  .gallery-item img {
+    filter: none;
+  }
+}
+
 @media (max-width: 900px) {
   .gallery-grid {
-    grid-template-rows: 420px 260px 300px;
+    grid-template-rows: 380px 300px 260px 300px;
     grid-template-columns: 1fr 1fr;
   }
 
@@ -134,12 +156,18 @@ const formatIndex = (index: number) => String(index + 1).padStart(2, '0')
   }
 
   .gallery-item-2 {
-    grid-column: 2;
+    grid-area: 1 / 2;
   }
 
-  .gallery-item-3,
-  .gallery-item-4 {
-    grid-column: 1 / -1;
+  .gallery-item-3 {
+    grid-area: 2 / 1 / 2 / -1;
+  }
+
+  .gallery-item-4,
+  .gallery-item-5,
+  .gallery-item-6 {
+    grid-column: auto;
+    grid-row: auto;
   }
 }
 
@@ -149,7 +177,7 @@ const formatIndex = (index: number) => String(index + 1).padStart(2, '0')
   }
 
   .gallery-grid {
-    grid-template-rows: repeat(4, 320px);
+    grid-template-rows: repeat(6, 300px);
     grid-template-columns: 1fr;
     display: grid;
   }
@@ -157,7 +185,9 @@ const formatIndex = (index: number) => String(index + 1).padStart(2, '0')
   .gallery-item-1,
   .gallery-item-2,
   .gallery-item-3,
-  .gallery-item-4 {
+  .gallery-item-4,
+  .gallery-item-5,
+  .gallery-item-6 {
     grid-area: auto / 1;
   }
 }

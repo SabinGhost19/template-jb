@@ -8,12 +8,21 @@ import coachCareer04 from '@/assets/images/coach-career-04.jpg?responsive'
 import coachCareer04Thumb from '@/assets/images/coach-career-04.jpg?thumb'
 import coachCareer05 from '@/assets/images/coach-career-05.jpg?responsive'
 import coachCareer05Thumb from '@/assets/images/coach-career-05.jpg?thumb'
-import galleryDetail from '@/assets/images/gallery-detail.jpg?responsive'
-import galleryHuddle from '@/assets/images/gallery-huddle.jpg?responsive'
-import heroFootball from '@/assets/images/hero-football.jpg?responsive'
+import gallery01 from '@/assets/images/gallery-01.jpg?responsive'
+import gallery02 from '@/assets/images/gallery-02.jpg?responsive'
+import gallery03 from '@/assets/images/gallery-03.jpg?responsive'
+import gallery04 from '@/assets/images/gallery-04.jpg?responsive'
+import gallery05 from '@/assets/images/gallery-05.jpg?responsive'
+import gallery06 from '@/assets/images/gallery-06.jpg?responsive'
+import heroPitch from '@/assets/images/hero-pitch.jpg?responsive'
+import matchday01 from '@/assets/images/matchday-01.jpg?responsive'
+import matchday02 from '@/assets/images/matchday-02.jpg?responsive'
+import matchday03 from '@/assets/images/matchday-03.jpg?responsive'
+import matchday04 from '@/assets/images/matchday-04.jpg?responsive'
 import locationAerial from '@/assets/images/location-aerial.png?responsive'
-import trainingTeam from '@/assets/images/training-team.jpg?responsive'
-
+import valueDiscipline from '@/assets/images/value-discipline.jpg?responsive'
+import valuePassion from '@/assets/images/value-passion.jpg?responsive'
+import valueRespect from '@/assets/images/value-respect.jpg?responsive'
 /** Output of the `?responsive` image preset (see `vite.config.ts`). */
 export interface ResponsivePicture {
   /** `srcset` per modern format (e.g. `avif`, `webp`). */
@@ -54,6 +63,12 @@ export const COACH_THUMB_SIZES = '(max-width: 560px) 30vw, 160px'
  */
 const VALUE_PANEL_SIZES = '(max-width: 860px) calc(100vw - 32px), (max-width: 1360px) 52vw, 700px'
 
+/**
+ * `sizes` for the academy carousel. It spans the whole shell, so on a wide
+ * screen the frame is the shell's own maximum width.
+ */
+const MATCHDAY_SIZES = '(max-width: 1320px) calc(100vw - 40px), 1280px'
+
 /** `sizes` for the large frame of the coach archive. */
 const COACH_FRAME_SIZES =
   '(max-width: 560px) calc(100vw - 32px), (max-width: 860px) 520px, (max-width: 1360px) 44vw, 570px'
@@ -65,18 +80,38 @@ const COACH_FRAME_SIZES =
 export const images = {
   /** Hero background. */
   hero: {
-    picture: heroFootball,
-    bg: '#332f20',
-    alt: 'Tânăr fotbalist pe teren la apus',
+    picture: heroPitch,
+    bg: '#757f51',
+    alt: 'Copiii academiei într-un joc la antrenament, pe terenul din Borlești',
     sizes: '100vw',
   },
-  /** "01 Academia" section. */
-  academy: {
-    picture: trainingTeam,
-    bg: '#686751',
-    alt: 'Antrenament coordonat pentru copiii academiei',
-    sizes: '(max-width: 640px) 100vw, (max-width: 900px) 58vw, (max-width: 1320px) 34vw, 440px',
-  },
+  /** "01 Academia" — carusel cu momente de la joc, în ordinea afișării. */
+  matchday: [
+    {
+      picture: matchday01,
+      bg: '#909671',
+      alt: 'Copiii desfășurați pe teren în timpul unui joc la antrenament',
+      sizes: MATCHDAY_SIZES,
+    },
+    {
+      picture: matchday02,
+      bg: '#7b7d55',
+      alt: 'Duel pentru minge între doi copii, cu restul echipei în urmărire',
+      sizes: MATCHDAY_SIZES,
+    },
+    {
+      picture: matchday03,
+      bg: '#6e6b55',
+      alt: 'Grupa strânsă în jurul mingii, la marginea terenului',
+      sizes: MATCHDAY_SIZES,
+    },
+    {
+      picture: matchday04,
+      bg: '#79834d',
+      alt: 'Doi copii aleargă spre minge pe terenul sintetic',
+      sizes: MATCHDAY_SIZES,
+    },
+  ],
   /** "04 Antrenor" — arhiva de jucător, în ordinea din bandă (01 → 05). */
   coachCareer: [
     {
@@ -118,21 +153,21 @@ export const images = {
   /** "Filosofia noastră" — câte o fotografie pentru fiecare valoare, în ordinea din VALUES. */
   values: [
     {
-      picture: galleryHuddle,
-      bg: '#453a25',
-      alt: 'Echipa și antrenorul, strânși în cerc cu mâinile în mijloc înainte de meci',
+      picture: valueRespect,
+      bg: '#76684f',
+      alt: 'Copiii strânși în jurul antrenorului, ascultând indicațiile',
       sizes: VALUE_PANEL_SIZES,
     },
     {
-      picture: trainingTeam,
-      bg: '#686751',
-      alt: 'Antrenorul coordonează un exercițiu cu mingea la un antrenament al academiei',
+      picture: valueDiscipline,
+      bg: '#787d5b',
+      alt: 'Antrenorul conduce un exercițiu, copiii lucrează pe teren',
       sizes: VALUE_PANEL_SIZES,
     },
     {
-      picture: galleryDetail,
-      bg: '#3c3f32',
-      alt: 'Prim-plan cu o gheată lovind mingea pe iarbă udă, cu noroi împrăștiat',
+      picture: valuePassion,
+      bg: '#72704d',
+      alt: 'Antrenorul împarte mingile, copiii se strâng nerăbdători în jurul lui',
       sizes: VALUE_PANEL_SIZES,
     },
   ],
@@ -143,36 +178,48 @@ export const images = {
     alt: 'Vedere aeriană cu terenul de fotbal din Borlești și Școala Mastacăn alăturată, pe Strada Școlii',
     sizes: '(max-width: 640px) calc(100vw - 32px), (max-width: 1100px) 58vw, 708px',
   },
-  /** "05 Galerie" — order matters (01 → 04). */
+  /** "05 Galerie" — mozaic de șase, ordinea contează (vezi grila din GallerySection). */
   gallery: [
     {
-      picture: trainingTeam,
-      bg: '#686751',
-      alt: 'Copii la un antrenament de fotbal Junior Borlești',
+      picture: gallery01,
+      bg: '#6f6f48',
+      alt: 'Antrenorul explică unui grup de copii, în picioare pe teren',
       sizes: '(max-width: 640px) 100vw, (max-width: 900px) 49vw, (max-width: 1320px) 41vw, 522px',
     },
     {
-      picture: galleryHuddle,
-      bg: '#453a25',
-      alt: 'Echipa de juniori într-un moment de unitate',
+      picture: gallery02,
+      bg: '#5e684b',
+      alt: 'Vedere largă a terenului, cu întreaga grupă la exerciții cu mingea',
       sizes: '(max-width: 640px) 100vw, (max-width: 900px) 49vw, (max-width: 1320px) 57vw, 742px',
     },
     {
-      picture: galleryDetail,
-      bg: '#3c3f32',
-      alt: 'Detaliu cu mingea și ghetele pe teren',
+      picture: gallery03,
+      bg: '#777c56',
+      alt: 'Antrenorul printre copii, la marginea terenului',
       sizes: '(max-width: 900px) 100vw, (max-width: 1320px) 28vw, 363px',
     },
     {
-      picture: heroFootball,
-      bg: '#332f20',
-      alt: 'Tânăr fotbalist alergând cu mingea',
+      picture: gallery04,
+      bg: '#748161',
+      alt: 'Antrenament văzut de la nivelul ierbii, cu mingea în prim-plan',
       sizes: '(max-width: 900px) 100vw, (max-width: 1320px) 28vw, 363px',
+    },
+    {
+      picture: gallery05,
+      bg: '#6f6146',
+      alt: 'Antrenorul aplecat între copii, la finalul unui exercițiu',
+      sizes: '(max-width: 640px) 100vw, (max-width: 900px) 66vw, (max-width: 1320px) 53vw, 690px',
+    },
+    {
+      picture: gallery06,
+      bg: '#737962',
+      alt: 'Antrenorul demonstrează o mișcare, copiii privesc',
+      sizes: '(max-width: 640px) 100vw, (max-width: 900px) 33vw, (max-width: 1320px) 28vw, 363px',
     },
   ],
 } satisfies {
   hero: SiteImage
-  academy: SiteImage
+  matchday: readonly SiteImage[]
   coachCareer: readonly CoachCareerImage[]
   values: readonly SiteImage[]
   location: SiteImage

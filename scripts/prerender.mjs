@@ -54,11 +54,21 @@ try {
  * simply skips the preload and falls back to the `<picture>` negotiation.
  */
 function injectHeroPreload(template, body) {
-  // Anchored on the file name rather than on position: Vue's SSR output
-  // interleaves `<!--[-->` fragment markers between <picture> and <source>.
-  const hero = body.match(
-    /<source type="image\/avif" srcset="([^"]*hero-football[^"]*)" sizes="([^"]+)"/,
-  )
+  // Anchored on the element, not on a file name: the hero photograph gets
+  // replaced from time to time, and a regex that knows its name goes quiet the
+  // moment it does — the preload simply stops being emitted, with nothing
+  // failing. Vue's SSR output interleaves `<!--[-->` markers between <picture>
+  // and <source>, so the sources are found by scanning back from the <img>.
+  const imgAt = body.indexOf('class="hero-image"')
+  const sources =
+    imgAt === -1
+      ? []
+      : [
+          ...body
+            .slice(0, imgAt)
+            .matchAll(/<source type="image\/avif" srcset="([^"]+)" sizes="([^"]+)"/g),
+        ]
+  const hero = sources.at(-1)
 
   if (!hero) {
     console.warn('hero preload skipped: no AVIF source found in the rendered markup')

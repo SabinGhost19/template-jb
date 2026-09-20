@@ -299,6 +299,19 @@ const counter = computed(() => `${pad(activeIndex.value + 1)} / ${pad(career.len
   line-height: 1.75;
 }
 
+@media (hover: none), (max-width: 860px) {
+  .coach-thumb img,
+  .coach-thumb.is-active img {
+    filter: none;
+  }
+
+  /* Without the colour difference, the inactive frames are held back by a
+     slight dim instead, so the selected one still reads as selected. */
+  .coach-thumb:not(.is-active) img {
+    opacity: 0.55;
+  }
+}
+
 @media (max-width: 1100px) {
   .coach-grid {
     gap: 44px;

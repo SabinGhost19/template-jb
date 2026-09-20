@@ -199,6 +199,14 @@ function open(index: number) {
   translate: none;
 }
 
+@media (hover: none) {
+  .value-panel img,
+  .value-panel.is-open img {
+    /* Only the dimming is kept, so the photographs stay in full colour. */
+    filter: brightness(0.72);
+  }
+}
+
 @media (max-width: 1100px) {
   .value-body {
     padding: 20px;
