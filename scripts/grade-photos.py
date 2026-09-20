@@ -33,13 +33,13 @@ OUT = ROOT / 'src' / 'assets' / 'images'
 
 # (source, output, target aspect ratio or None, focus 0..1 along the cropped axis)
 PHOTOS = [
-    # Hero — a scrimmage, wide enough to survive the hero's aggressive crop.
-    ('during-match/IMG_8201.JPEG', 'hero-pitch.jpg', 3 / 2, 0.52),
     # "01 Academia" — a wide carousel of match-day frames, in display order.
+    # The hero is not produced here: it is `hero-football.jpg`, kept as supplied.
     ('during-match/IMG_8167.JPEG', 'matchday-01.jpg', 16 / 9, 0.46),
     ('during-match/IMG_8115.JPEG', 'matchday-02.jpg', 16 / 9, 0.5),
     ('during-match/IMG_8184.JPEG', 'matchday-03.jpg', 16 / 9, 0.48),
     ('during-match/IMG_8176.JPEG', 'matchday-04.jpg', 16 / 9, 0.52),
+    ('during-match/IMG_8201.JPEG', 'matchday-05.jpg', 16 / 9, 0.52),
     # The three values in the philosophy section.
     ('relationship-teamwork/IMG_8137.JPEG', 'value-respect.jpg', 4 / 5, 0.44),
     ('training/IMG_8170.JPEG', 'value-discipline.jpg', 4 / 5, 0.46),

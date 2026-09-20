@@ -14,11 +14,12 @@ import gallery03 from '@/assets/images/gallery-03.jpg?responsive'
 import gallery04 from '@/assets/images/gallery-04.jpg?responsive'
 import gallery05 from '@/assets/images/gallery-05.jpg?responsive'
 import gallery06 from '@/assets/images/gallery-06.jpg?responsive'
-import heroPitch from '@/assets/images/hero-pitch.jpg?responsive'
+import heroFootball from '@/assets/images/hero-football.jpg?responsive'
 import matchday01 from '@/assets/images/matchday-01.jpg?responsive'
 import matchday02 from '@/assets/images/matchday-02.jpg?responsive'
 import matchday03 from '@/assets/images/matchday-03.jpg?responsive'
 import matchday04 from '@/assets/images/matchday-04.jpg?responsive'
+import matchday05 from '@/assets/images/matchday-05.jpg?responsive'
 import locationAerial from '@/assets/images/location-aerial.png?responsive'
 import valueDiscipline from '@/assets/images/value-discipline.jpg?responsive'
 import valuePassion from '@/assets/images/value-passion.jpg?responsive'
@@ -80,9 +81,9 @@ const COACH_FRAME_SIZES =
 export const images = {
   /** Hero background. */
   hero: {
-    picture: heroPitch,
-    bg: '#757f51',
-    alt: 'Copiii academiei într-un joc la antrenament, pe terenul din Borlești',
+    picture: heroFootball,
+    bg: '#332f20',
+    alt: 'Tânăr fotbalist conducând mingea pe teren, la apus',
     sizes: '100vw',
   },
   /** "01 Academia" — carusel cu momente de la joc, în ordinea afișării. */
@@ -109,6 +110,12 @@ export const images = {
       picture: matchday04,
       bg: '#79834d',
       alt: 'Doi copii aleargă spre minge pe terenul sintetic',
+      sizes: MATCHDAY_SIZES,
+    },
+    {
+      picture: matchday05,
+      bg: '#778155',
+      alt: 'Grup de copii disputând mingea în mijlocul terenului',
       sizes: MATCHDAY_SIZES,
     },
   ],

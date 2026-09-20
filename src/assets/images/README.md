@@ -19,9 +19,11 @@ de dominanta albastră, lumini calde, vibranță în loc de saturație — ca ve
 portocalii să nu devină pete — claritate cu prag și o vignetă abia perceptibilă.
 Alocarea completă (ce sursă intră în ce slot) e în capul scriptului.
 
-Toate imaginile de aici sunt fotografii reale de la Junior Borlești. Setul
-anterior — `hero-football`, `training-team`, `gallery-huddle`, `gallery-detail`,
-`coach-portrait` — era stoc/AI și a fost eliminat.
+Fotografiile din secțiuni sunt reale, făcute la Junior Borlești. Setul stoc/AI
+anterior — `training-team`, `gallery-huddle`, `gallery-detail`, `coach-portrait`
+— a fost eliminat. Excepția este `hero-football.jpg`, păstrată la cerere ca
+imagine de deschidere; nu e o fotografie a academiei și nu trece prin scriptul
+de gradare.
 
 ## Ce e folosit unde
 
